@@ -12,6 +12,12 @@ const Display = ({text,figure}) => {
 }
 const Statistics= ({good,neutral,bad,total}) => {
 
+if(total===0)
+{
+  return (
+    <p>No feedback given</p>
+  )
+}
   return (
     <div>
     <Display text="good" figure={good} />
