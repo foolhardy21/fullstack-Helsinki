@@ -5,25 +5,41 @@ const Button = ({title,handleClick}) => {
     <button onClick={handleClick}>{title}</button>
   )
 }
-const Display = ({text,count}) => {
+const Display = ({text,figure}) => {
   return (
-    <p>{text} {count}</p>
+    <p>{text} {figure}</p>
   )
 }
+const Statistics= ({good,neutral,bad,total}) => {
 
+  return (
+    <div>
+    <Display text="good" figure={good} />
+    <Display text="neutral" figure={neutral} />
+    <Display text="bad" figure={bad} />
+    <Display text="all" figure={total} />
+    <Display text="average" figure={(good-bad)/total} />
+    <p>positive {(good/total)*100} %</p>
+    </div>
+  )
+}
 const App = () => {
   const [good,setGood] = useState(0)
   const [neutral,setNeutral] = useState(0)
   const [bad,setBad] = useState(0)
+  const [all,setAll] = useState(0)
 
   const updateGood = () => {
     setGood(good+1)
+    setAll(all+1)
   }
   const updateNeutral = () => {
     setNeutral(neutral+1)
+    setAll(all+1)
   }
   const updateBad = () => {
     setBad(bad+1)
+    setAll(all+1)
   }
   return (
     <div>
@@ -32,9 +48,8 @@ const App = () => {
     <Button title="neutral" handleClick={updateNeutral} />
     <Button title="bad" handleClick={updateBad} />
     <h1>statistics</h1>
-    <Display text="good" count={good} />
-    <Display text="neutral" count={neutral} />
-    <Display text="bad" count={bad} />
+    <Statistics good={good} neutral={neutral}
+     bad={bad} total={all} />
     </div>
   );
 }
