@@ -5,30 +5,18 @@ const Button = ({title,handleClick}) => {
     <button onClick={handleClick}>{title}</button>
   )
 }
-const Display = ({text,figure}) => {
-  return (
-    <p>{text} {figure}</p>
-  )
-}
-const Statistics= ({good,neutral,bad,total}) => {
 
-if(total===0)
-{
+const Statistics= ({text,value}) => {
+  if(text==="positive")
+  {return (
+    <p>{text} {value} %</p>
+  )
+  }
   return (
-    <p>No feedback given</p>
+    <p>{text} {value}</p>
   )
 }
-  return (
-    <div>
-    <Display text="good" figure={good} />
-    <Display text="neutral" figure={neutral} />
-    <Display text="bad" figure={bad} />
-    <Display text="all" figure={total} />
-    <Display text="average" figure={(good-bad)/total} />
-    <p>positive {(good/total)*100} %</p>
-    </div>
-  )
-}
+
 const App = () => {
   const [good,setGood] = useState(0)
   const [neutral,setNeutral] = useState(0)
@@ -47,6 +35,20 @@ const App = () => {
     setBad(bad+1)
     setAll(all+1)
   }
+
+  if(all===0)
+  {
+    return (
+      <div>
+      <h1>give feedback</h1>
+      <Button title="good" handleClick={updateGood} />
+      <Button title="neutral" handleClick={updateNeutral} />
+      <Button title="bad" handleClick={updateBad} />
+      <h1>statistics</h1>
+      <p>No feedback given</p>
+      </div>
+    )
+  }
   return (
     <div>
     <h1>give feedback</h1>
@@ -54,10 +56,15 @@ const App = () => {
     <Button title="neutral" handleClick={updateNeutral} />
     <Button title="bad" handleClick={updateBad} />
     <h1>statistics</h1>
-    <Statistics good={good} neutral={neutral}
-     bad={bad} total={all} />
+    <Statistics text="good" value={good}/>
+    <Statistics text="neutral" value={neutral} />
+    <Statistics text="bad" value={bad} />
+    <Statistics text="all" value={all} />
+    <Statistics text="average" value={(good-bad)/all} />
+    <Statistics text="positive" value={(good/all)*100} />
     </div>
   );
+
 }
 
 export default App;
