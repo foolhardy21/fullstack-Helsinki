@@ -1,5 +1,22 @@
 import React,{useState} from 'react'
 
+const Button = ({title,clickAction}) => {
+  return (
+    <button onClick={clickAction}>{title}</button>
+  )
+}
+
+const Heading = ({text}) => {
+  return (
+    <h2>{text}</h2>
+  )
+}
+
+const Paragraph = ({text}) => {
+  return(
+    <p>{text}</p>
+  )
+}
 const App = () => {
 
   const anecdotes = [
@@ -10,6 +27,7 @@ const App = () => {
     'Premature optimization is the root of all evil.',
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
   ]
+
   const [selected,setSelected] = useState(0)
   const [vote,setVote] = useState(new Array(6).fill(0));
 
@@ -24,12 +42,19 @@ const App = () => {
     setVote(copy)
   }
 
+  const maxvote = Math.max(...vote)
+  const maxquote = anecdotes[vote.indexOf(maxvote)]
+
   return (
       <div>
-      <h3>{anecdotes[selected]}</h3>
-      <h3>has {vote[selected]} votes</h3>
-      <button onClick={getnextAnecdote}>next anecdote</button>
-      <button onClick={updateVotes}>vote</button>
+      <Heading text="Anecdote of the day" />
+      <Paragraph text={anecdotes[selected]} />
+      <p>has {vote[selected]} votes</p>
+      <Button title="next anecdote" clickAction={getnextAnecdote} />
+      <Button title="vote" clickAction={updateVotes} />
+      <Heading text="Anecdote with the most votes" />
+      <Paragraph text={maxquote} />
+      <p>has {maxvote} votes</p>
       </div>
   );
 }
