@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = ({name}) => {
   return (
-    <h1>{name}</h1>
+    <h2>{name}</h2>
   )
 }
 const Part = ({partname,partex}) => {
@@ -35,7 +35,7 @@ const Course = ({course}) => {
 
 const App=() => {
   const courses = [
-    {
+      {
     id:1,
     name: 'Half Stack application development',
     parts: [
@@ -80,6 +80,7 @@ const App=() => {
 ]
   return (
     <div>
+    <h1>Web development curriculum</h1>
     {courses.map((course,i) => <Course key={i} course={course}/>)}
     </div>
   );
