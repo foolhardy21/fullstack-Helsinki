@@ -9,11 +9,17 @@ const App= () => {
   }
   const addName = (event) => {
     event.preventDefault()
+    var unique = persons.find(person => person.name === newName)
+    if(typeof unique === 'undefined'){
     const nameobject = {
       name: newName
     }
     setPersons(persons.concat(nameobject))
     setNewName('')
+  }
+  else {
+    window.alert(`${newName} is already added to the phonebook`)
+  }
   }
 
   return (
