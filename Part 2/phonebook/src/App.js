@@ -2,11 +2,20 @@ import React, {useState} from 'react'
 
 const App= () => {
   const [persons,setPersons] = useState([
-    {name: 'Arto Hellas',number: '040-44-1234567'}
+    {name: 'Arto Hellas',number: '040-44-1234567'},
+    {name: 'Rahul Kohli',number: '031-81-1234567'},
+    {name: 'Bear Jew',number: '022-49-1234567'},
+    {name: 'Emmanuel Skarsgard',number: '067-98-1234567'}
   ])
   const [newName,setNewName] = useState('')
   const [newNumber,setNewNumber] = useState('')
+  const [searchName,setSearchName] = useState('')
 
+  const personstoshow = persons.filter(person => person.name.includes(searchName))
+
+  const handleSearchChange = (event) => {
+    setSearchName(event.target.value)
+  }
   const handlenameChange = (event) => {
     setNewName(event.target.value)
   }
@@ -31,8 +40,11 @@ const App= () => {
   }
 
   return (
+
       <div>
       <h2>Phonebook</h2>
+      filter shown with<input value={searchName} onChange={handleSearchChange} />
+      <h2>add a new</h2>
       <form onSubmit={addAccount}>
       <div>
         name: <input value={newName} onChange={handlenameChange}/>
@@ -45,7 +57,7 @@ const App= () => {
       </div>
       </form>
       <h2>Numbers</h2>
-      {persons.map((person,i) => <div key={i}>{person.name} {person.number}</div>)}
+      {personstoshow.map((person,i) => <div key={i}>{person.name} {person.number}</div>)}
       </div>
   )
 }
