@@ -23,7 +23,7 @@ const App= () => {
   useEffect(hook,[])
 
   console.log('render',persons.length,'persons')
-  
+
   const personstoshow = persons.filter(person => person.name.includes(searchName))
 
   const handleSearchChange = (event) => {
