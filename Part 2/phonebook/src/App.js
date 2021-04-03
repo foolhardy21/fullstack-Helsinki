@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
-import axios from 'axios'
+import personService from './services/persons'
 
 const App= () => {
   const [persons,setPersons] = useState([])
@@ -10,19 +10,13 @@ const App= () => {
   const [newNumber,setNewNumber] = useState('')
   const [searchName,setSearchName] = useState('')
 
-  const hook = () => {
-    console.log('effect')
-    axios
-    .get('http://localhost:3001/persons')
-    .then(response => {
-      setPersons(response.data)
+  useEffect(() => {
+    personService
+    .getAll()
+    .then(initialPersons => {
+      setPersons(initialPersons)
     })
-    console.log('promise fulfilled')
-  }
-
-  useEffect(hook,[])
-
-  console.log('render',persons.length,'persons')
+  },[])
 
   const personstoshow = persons.filter(person => person.name.includes(searchName))
 
@@ -43,7 +37,13 @@ const App= () => {
       name: newName,
       number: newNumber
     }
-    setPersons(persons.concat(nameobject))
+
+    personService
+    .create(nameobject)
+    .then(returnedPerson => {
+        setPersons(persons.concat(returnedPerson))
+    })
+
   }
   else {
     window.alert(`${newName} is already added to the phonebook`)
