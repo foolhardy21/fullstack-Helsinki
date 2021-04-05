@@ -59,7 +59,14 @@ const App= () => {
 
   }
   else {
-    window.alert(`${newName} is already added to the phonebook`)
+       if(window.confirm(`${newName} is already added to the phonebook,replace the old number with the new one ?`))
+       {
+         const changedPerson = {...unique,number:newNumber}
+         personService.update(changedPerson)
+         .then(responsedata => {
+           setPersons(persons.map(person => person.id===responsedata.id?responsedata:person))
+         })
+       }
   }
   setNewName('')
   setNewNumber('')
