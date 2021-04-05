@@ -11,7 +11,13 @@ const create = (nameobject) => {
   return request.then(response => response.data)
 }
 
+const remove = (objectid) => {
+    const request = axios.delete(baseUrl+`/`+objectid.toString())
+    return request.then(response => response)
+}
+
 export default {
   getAll: getAll,
-  create: create
+  create: create,
+  remove: remove
 }

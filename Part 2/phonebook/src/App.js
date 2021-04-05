@@ -20,6 +20,19 @@ const App= () => {
 
   const personstoshow = persons.filter(person => person.name.includes(searchName))
 
+  const deleteAccount = (event) => {
+    event.preventDefault()
+    const id = parseInt(event.target.value)
+    const personname = persons.find(person => person.id === id)
+    if(window.confirm(`Delete ${personname.name}?`)){
+      personService
+      .remove(id)
+      .then(response => {
+          setPersons(persons.filter(person => person.id !== id))
+      })
+    }
+
+  }
   const handleSearchChange = (event) => {
     setSearchName(event.target.value)
   }
@@ -63,7 +76,7 @@ const App= () => {
       handlenameChange={handlenameChange} newNumber={newNumber}
       handlenumberChange={handlenumberChange} />
       <h2>Numbers</h2>
-      <Persons personstoshow={personstoshow} />
+      <Persons personstoshow={personstoshow} deleteAcc={deleteAccount}/>
       </div>
   )
 }
