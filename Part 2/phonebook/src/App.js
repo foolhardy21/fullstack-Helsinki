@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
+import Notification from './components/Notification'
 import personService from './services/persons'
 
 const App= () => {
@@ -9,6 +10,7 @@ const App= () => {
   const [newName,setNewName] = useState('')
   const [newNumber,setNewNumber] = useState('')
   const [searchName,setSearchName] = useState('')
+  const [confirmMessage,setConfirmMessage] = useState(null)
 
   useEffect(() => {
     personService
@@ -68,6 +70,11 @@ const App= () => {
          })
        }
   }
+  setConfirmMessage(`Added ${newName}.`)
+  setTimeout(() => {
+    setConfirmMessage(null)
+  },5000)
+
   setNewName('')
   setNewNumber('')
   }
@@ -76,6 +83,7 @@ const App= () => {
 
       <div>
       <h2>Phonebook</h2>
+      <Notification message={confirmMessage} />
       <Filter title="filter shown with"
       name={searchName} handleFunction={handleSearchChange} />
       <h2>Add a New</h2>
