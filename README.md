@@ -28,3 +28,4 @@ Participants are expected to have good programming skills, basic knowledge of we
 - Deploying app to internet
 - Saving data to MongoDB
 - Validation and ESLint
+[Exercises can be found here](https://github.com/foolhardy21/part3-helsinki-fullstack)
