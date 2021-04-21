@@ -24,7 +24,7 @@ const App= () => {
 
   const deleteAccount = (event) => {
     event.preventDefault()
-    const id = parseInt(event.target.value)
+    const id = (event.target.value)
     const personname = persons.find(person => person.id === id)
     if(window.confirm(`Delete ${personname.name}?`)){
       personService
