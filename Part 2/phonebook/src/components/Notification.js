@@ -7,7 +7,7 @@ const Notification = ({message}) => {
   return (
     <div className='confirmm'>{message}</div>
   )
-  if(message.includes(`already`))
+  else
   return (
     <div className='error'>{message}</div>
   )

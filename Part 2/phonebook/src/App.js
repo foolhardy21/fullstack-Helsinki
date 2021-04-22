@@ -57,11 +57,18 @@ const App= () => {
     .create(nameobject)
     .then(returnedPerson => {
         setPersons(persons.concat(returnedPerson))
+        setConfirmMessage(`Added ${returnedPerson.name}.`)
+        setTimeout(() => {
+          setConfirmMessage(null)
+        },5000)
     })
-    setConfirmMessage(`Added ${newName}.`)
-    setTimeout(() => {
-      setConfirmMessage(null)
-    },5000)
+    .catch(error => {
+      console.log(error.response.data.error)
+      setConfirmMessage(`${JSON.stringify(error.response.data.error)}`)
+      setTimeout(() => {
+        setConfirmMessage(null)
+      },5000)
+    })
 
   }
   else {
