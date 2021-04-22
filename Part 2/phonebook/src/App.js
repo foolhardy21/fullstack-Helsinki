@@ -85,9 +85,9 @@ const App= () => {
 
         })
          .catch(error => {
-           console.log(newName)
-           setPersons(persons.filter(person => person.name !== newName))
-           setConfirmMessage(`Information of ${newName} was already deleted from the server`)
+           console.log(error.response.data)
+           //setPersons(persons.filter(person => person.name !== newName))
+           setConfirmMessage(`${error.response.data.error}`)
            setTimeout(() => {
              setConfirmMessage(null)
            },5000)
