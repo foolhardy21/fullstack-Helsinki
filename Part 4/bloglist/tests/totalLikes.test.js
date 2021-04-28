@@ -74,4 +74,5 @@ describe('total likes',() => {
 
     expect(totalLikes(blogs)).toBe(36)
   })
+
 })
