@@ -6,7 +6,7 @@ const config = require('./util/config')
 const logger = require('./util/logger')
 const blogsRouter = require('./controllers/blogs')
 
-//UPDATE THE MONGODB BEFORE USE
+//UPDATE THE MONGODB URI BEFORE USE
 
 mongoose.connect(config.MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true})
 .then(result => {
