@@ -11,7 +11,7 @@ exports.postBlog = function(req, res, next) {
   const blog = new Blog({
     title: req.body.title,
     author: req.body.author,
-    text: req.body.text,
+    url: req.body.url,
     likes: req.body.likes
   })
   blog.save()

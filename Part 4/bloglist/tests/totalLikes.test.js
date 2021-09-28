@@ -1,4 +1,4 @@
-const totalLikes = require('../util/list_helper').totalLikes
+const {totalLikes} = require('../util/list_helper')
 
 describe('total likes',() => {
 

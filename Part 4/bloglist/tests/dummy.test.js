@@ -1,4 +1,4 @@
-const dummy = require('../util/list_helper').dummy
+const {dummy} = require('../util/list_helper')
 
 test('dummy returns one',() => {
   const blogs = []
