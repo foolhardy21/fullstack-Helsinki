@@ -48,6 +48,11 @@ describe('blog api', () => {
         const response = await api.get('/api/blogs')
         expect(response.body[0].title).toContain('React patterns')
     },6000)
+
+    test('unique identifier _id is defined', async () => {
+        const response = await api.get('/api/blogs')
+        expect(response.body[0]._id).toBeDefined()
+    })
 })
 
 afterAll(() => {
