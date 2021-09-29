@@ -64,10 +64,30 @@ describe('blog api', () => {
 
         const response = await api.get('/api/blogs')
         const titles = response.body.map(blog => blog.title)
-
         expect(titles).toHaveLength(initialBlogs.length+1)
         expect(titles).toContain('Sample blog')
+
+    }, 10000)
+
+    test('likes defaults to 0 when undefined', async () => {
+        const newBlog2 = {
+            title: "Sample blog2",
+            author: "Sample author2",
+            url: "http://www.samplelink2.com",
+        }
+
+        await api.post('/api/blogs')
+                .send(newBlog2)
+                .expect(201)
         
+        const response = await api.get('/api/blogs')
+        const blogs = response.body
+        blogs.map(blog => {
+            if(blog.title === newBlog2.title) {
+                expect(blog.likes).toEqual(0)
+            }
+        })
+          
     }, 10000)
 })
 

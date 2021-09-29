@@ -11,7 +11,7 @@ exports.postBlog = async function(req, res, next) {
     title: req.body.title,
     author: req.body.author,
     url: req.body.url,
-    likes: req.body.likes
+    likes: req.body.likes || 0
   })
   const response = await blog.save()
   res.status(201).json(response) 
