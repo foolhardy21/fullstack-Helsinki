@@ -89,6 +89,17 @@ describe('blog api', () => {
         })
           
     }, 10000)
+
+    test('when title or url is missing', async () => {
+        const newBlog3 = {
+            author: "Sample author2",
+            likes: 20,
+        }
+        await api.post('/api/blogs')
+                .send(newBlog3)
+                .expect(400)
+                .expect('Bad Request')
+    })
 })
 
 afterAll(() => {
