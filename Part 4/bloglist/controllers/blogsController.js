@@ -1,21 +1,19 @@
 const Blog = require('../models/Blog')
 
-exports.getAllBlogs = function(req, res, next) {
-  Blog.find({})
-  .then(response => {
-    res.json(response)
-  })
+exports.getAllBlogs = async function(req, res, next) {
+  const response = await Blog.find({})  
+  res.status(200).json(response)
+
 }
 
-exports.postBlog = function(req, res, next) {
+exports.postBlog = async function(req, res, next) {
   const blog = new Blog({
     title: req.body.title,
     author: req.body.author,
     url: req.body.url,
     likes: req.body.likes
   })
-  blog.save()
-    .then(result => {
-      res.json(result)
-    })
+  const response = await blog.save()
+  res.status(201).json(response) 
+
 }
