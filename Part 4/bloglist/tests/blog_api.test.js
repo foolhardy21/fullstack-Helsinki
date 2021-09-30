@@ -1,9 +1,10 @@
-const mongoose = require('mongoose')
 const supertest = require('supertest')
+const mongoose = require('mongoose')
 const app = require('../app')
 const Blog = require('../models/Blog')
 
 const api = supertest(app)
+
 const initialBlogs = [
     {
       title: "React patterns",
@@ -100,6 +101,7 @@ describe('blog api', () => {
                 .expect(400)
                 .expect('Bad Request')
     })
+
 })
 
 afterAll(() => {

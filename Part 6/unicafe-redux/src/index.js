@@ -5,7 +5,7 @@ import reducer from './reducer'
 
 const store = createStore(reducer)
 
-const App = () => {
+const App = () => {        
   const good = () => {
     store.dispatch({
       type: 'GOOD'

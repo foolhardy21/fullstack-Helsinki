@@ -6,4 +6,6 @@ blogsRouter.get('/api/blogs', blogsController.getAllBlogs)
 
 blogsRouter.post('/api/blogs', blogsController.postBlog)
 
+blogsRouter.delete('/api/blogs/:id', blogsController.deleteBlog)
+
 module.exports = blogsRouter
