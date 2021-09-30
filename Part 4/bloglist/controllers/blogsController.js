@@ -33,3 +33,22 @@ exports.deleteBlog = async function(req, res, next) {
     }
   })
 }
+
+exports.updateBlog = async function(req, res, next) {
+  console.log(req.body)
+  const blog = {
+    title: req.body.title,
+    author: req.body.author,
+    url: req.body.url,
+    likes: req.body.likes || 0
+  }
+  await Blog.findByIdAndUpdate(req.params.id, blog, {new: true}, (err, result) => {
+    if(err){
+      res.send('Erro in updating')
+      next(err)
+    } else {
+      res.json(result)
+    }
+  })
+}
+
