@@ -54,13 +54,28 @@ exports.updateBlog = async function(req, res, next) {
   })
 }
 
+exports.getAllUsers = async function(req, res) {
+  const response = await User.find({})
+  res.status(200).json(response)
+}
+
 exports.postUser = async function(req, res) {
-  const user = new User({
-    username: req.body.username,
-    name: req.body.name,
-    passwordHash: await bcrypt.hash(req.body.password, 10),
-  })
-  const response = await user.save()
-  res.status(201).send(response)
+
+  if (req.body.password && req.body.password.length >= 3) {
+    const user = new User({
+      username: req.body.username,
+      name: req.body.name,
+      passwordHash: await bcrypt.hash(req.body.password, 10),
+    })
+    await user.save((err, result) => {
+      if(err) {
+        res.status(400).send('Username should be unique')
+      } else {
+        res.status(201).send(result)
+      }
+    })
+  } else {
+    res.status(400).send('Password should have atleast 3 chars')
+  }
   
 }

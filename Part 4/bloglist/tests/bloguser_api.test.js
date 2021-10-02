@@ -29,18 +29,55 @@ describe('bloguser api',() => {
             name: 'samplename',
             password: 'samplepass',
         }
+        
        const response = await api.post('/api/users')
             .send(newUser)
             .expect(201)
         expect(response.body._id).toBeDefined()
         expect(response.body.username).toBe(newUser.username)
         
-        // const response = await api.get('/api/users')
-        // const users = response.body.map(user => user.username)
-
-        // expect(users).tohaveLength(3)
-        // expect(users).toContain('sampleuser')
+        const response2 = await api.get('/api/users')
+                                    .expect(200)
+        const users = response2.body.map(user => user.username)
+        expect(users).toHaveLength(3)
+        expect(users).toContain('sampleuser')
         
+    },10000)
+
+    test('password length check', async () => {
+        const newUser = {
+            username: 'sampleuser',
+            name: 'samplename',
+            password: '',
+        }
+        const response = await api.post('/api/users')
+                                    .send(newUser)
+                                    .expect(400)
+        expect(response.text).toContain('atleast 3 chars')
+    },10000)
+
+    test('username length check', async () => {
+        const newUser = {
+            username: 'sa',
+            name: 'samplename2',
+            password: 'samplepass2',
+        }
+        const response = await api.post('/api/users')
+                                    .send(newUser)
+                                    .expect(400)
+        expect(response.text).toContain('unique')
+    },10000)
+    
+    test('username unique check', async () => {
+        const newUser = {
+            username: 'wardaddy',
+            name: 'samplename2',
+            password: 'samplepass2',
+        }
+        const response = await api.post('/api/users')
+                                    .send(newUser)
+                                    .expect(400)
+        expect(response.text).toContain('unique')
     },10000)
 })
 
