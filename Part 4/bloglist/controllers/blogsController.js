@@ -1,4 +1,6 @@
 const Blog = require('../models/Blog')
+const User = require('../models/User')
+const bcrypt = require('bcrypt')
 
 exports.getAllBlogs = async function(req, res) {
   const response = await Blog.find({})  
@@ -52,3 +54,13 @@ exports.updateBlog = async function(req, res, next) {
   })
 }
 
+exports.postUser = async function(req, res) {
+  const user = new User({
+    username: req.body.username,
+    name: req.body.name,
+    passwordHash: await bcrypt.hash(req.body.password, 10),
+  })
+  const response = await user.save()
+  res.status(201).send(response)
+  
+}
