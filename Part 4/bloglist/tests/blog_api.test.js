@@ -56,6 +56,7 @@ describe('blog api', () => {
             title: "Sample blog",
             author: "Sample author",
             url: "http://www.samplelink.com",
+            username: 'foolhardy',
             likes: 55,
           }
 
@@ -75,6 +76,7 @@ describe('blog api', () => {
             title: "Sample blog2",
             author: "Sample author2",
             url: "http://www.samplelink2.com",
+            username: 'foolhardy',
         }
 
         await api.post('/api/blogs')
@@ -83,6 +85,7 @@ describe('blog api', () => {
         
         const response = await api.get('/api/blogs')
         const blogs = response.body
+
         blogs.map(blog => {
             if(blog.title === newBlog2.title) {
                 expect(blog.likes).toEqual(0)
