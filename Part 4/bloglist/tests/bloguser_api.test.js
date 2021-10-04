@@ -45,41 +45,41 @@ describe('bloguser api',() => {
         
     },10000)
 
-    // test('password length check', async () => {
-    //     const newUser = {
-    //         username: 'sampleuser',
-    //         name: 'samplename',
-    //         password: '',
-    //     }
-    //     const response = await api.post('/api/users')
-    //                                 .send(newUser)
-    //                                 .expect(400)
-    //     expect(response.text).toContain('atleast 3 chars')
-    // },10000)
+    test('password length check', async () => {
+        const newUser = {
+            username: 'sampleuser',
+            name: 'samplename',
+            password: '',
+        }
+        const response = await api.post('/api/users')
+                                    .send(newUser)
+                                    .expect(400)
+        expect(response.text).toContain('atleast 3 chars')
+    },10000)
 
-    // test('username length check', async () => {
-    //     const newUser = {
-    //         username: 'sa',
-    //         name: 'samplename2',
-    //         password: 'samplepass2',
-    //     }
-    //     const response = await api.post('/api/users')
-    //                                 .send(newUser)
-    //                                 .expect(400)
-    //     expect(response.text).toContain('atleast 3 chars')
-    // },10000)
+    test('username length check', async () => {
+        const newUser = {
+            username: 'sa',
+            name: 'samplename2',
+            password: 'samplepass2',
+        }
+        const response = await api.post('/api/users')
+                                    .send(newUser)
+                                    .expect(400)
+        expect(response.text).toContain('atleast 3 chars')
+    },10000)
     
-    // test('username unique check', async () => {
-    //     const newUser = {
-    //         username: 'wardaddy',
-    //         name: 'samplename2',
-    //         password: 'samplepass2',
-    //     }
-    //     const response = await api.post('/api/users')
-    //                                 .send(newUser)
-    //                                 .expect(400)
-    //     expect(response.text).toContain('unique')
-    // },10000)
+    test('username unique check', async () => {
+        const newUser = {
+            username: 'wardaddy',
+            name: 'samplename2',
+            password: 'samplepass2',
+        }
+        const response = await api.post('/api/users')
+                                    .send(newUser)
+                                    .expect(400)
+        expect(response.text).toContain('unique')
+    },10000)
 })
 
 afterAll(() => {
