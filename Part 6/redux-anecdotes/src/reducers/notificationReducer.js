@@ -1,6 +1,5 @@
-const initialState = {
-    message: ''
-}
+const notificationState = ''
+
 
 export const voteMessage = (text) => {
     return {
@@ -20,14 +19,14 @@ export const hideMessage = () => {
     }
 }
 
-const notificationReducer = (state= initialState, action) => {
+const notificationReducer = (state=notificationState, action) => {
 
     switch(action.type) {
-        case 'SAVE': return {message: `${action.data} is saved.`}
+        case 'SAVE': return `${action.data} is saved.`
 
-        case 'VOTEFOR': return {message: `You voted for "${action.data}"`}
+        case 'VOTEFOR': return `You voted for "${action.data}"`
 
-        case 'HIDE': return {message: ''}
+        case 'HIDE': return ''
         
         default: return state
     }

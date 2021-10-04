@@ -7,17 +7,17 @@ const Notification = () => {
     padding: 10,
     borderWidth: 1
   }
-  const notification = useSelector(state => state.notification)
+  const message = useSelector(state => state.notification)
 
-  if(notification.message) {
+  if(message) {
       return (
         <div style={style}>
-        {notification.message}
+        {message}
       </div>
       )
   } 
   return (
-    <div></div>
+    <></>
   ) 
   
 
