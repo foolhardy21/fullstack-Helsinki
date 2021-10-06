@@ -14,12 +14,7 @@ exports.postBlog = async function(req, res) {
   if(!req.body.title || !req.body.url) {
     res.status(400).send('Bad Request')
   } else {
-    const authorization = req.get('authorization')
-    let token =''
-    
-    if(authorization && authorization.toLowerCase().startsWith('bearer')) {
-      token = authorization.substring(7) 
-    }
+    const token = req.token
     const decodedToken = jwt.verify(token, process.env.SECRET)
     
     if(!token || !decodedToken.id) {
