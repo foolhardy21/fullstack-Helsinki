@@ -43,14 +43,25 @@ exports.postBlog = async function(req, res) {
 }
 
 exports.deleteBlog = async function(req, res, next) {
-  await Blog.findByIdAndRemove(req.params.id, (err, result) => {
-    if(err) {
-      res.send('Error in deleting')
-      next(err)
-    } else {
-      res.json(result)
-    }
-  })
+  
+  const blogId = req.params.id
+  const token = req.token
+  const blog = await Blog.findById(blogId)
+  const decodedToken = jwt.verify(token, process.env.SECRET)
+  if (blog.user.toString() !== decodedToken.id) {
+    res.status(401).json({
+      error: 'not authorized'
+    })
+  } else {
+    await Blog.findByIdAndRemove(blogId, (err, result) => {
+      if(err) {
+        res.status(401).send('invalid blog')
+        next(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
 }
 
 exports.updateBlog = async function(req, res, next) {

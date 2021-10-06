@@ -6,6 +6,7 @@ const logger = require('./util/logger')
 const blogsRouter = require('./routes/blogsRouter')
 const usersRouter = require('./routes/usersRouter')
 const loginRouter = require('./routes/loginRouter')
+const middleware = require('./util/middleware')
 
 mongoose.connect(config.MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true})
 .then(result => {
@@ -19,6 +20,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use(middleware.tokenExtractor)
 app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
