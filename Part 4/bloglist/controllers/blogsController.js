@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const Blog = require('../models/Blog')
 const User = require('../models/User')
 
@@ -10,25 +11,38 @@ exports.getAllBlogs = async function(req, res) {
 
 exports.postBlog = async function(req, res) {
   
-  if(!req.body.title && !req.body.url) {
+  if(!req.body.title || !req.body.url) {
     res.status(400).send('Bad Request')
   } else {
-    const user = await User.findOne({username: req.body.username})
-    const blog = user ? new Blog({
-      title: req.body.title,
-      author: req.body.author,
-      url: req.body.url,
-      likes: req.body.likes || 0,
-      user: user._id,
-    }) : new Blog({
-      title: req.body.title,
-      author: req.body.author,
-      url: req.body.url,
-      likes: req.body.likes || 0,
-    }) 
+    const authorization = req.get('authorization')
+    let token =''
+    
+    if(authorization && authorization.toLowerCase().startsWith('bearer')) {
+      token = authorization.substring(7) 
+    }
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    
+    if(!token || !decodedToken.id) {
+      res.status(401).send('invalid token')
+    }
+    
+    const user = await User.findById(decodedToken.id)
 
-    const response = await blog.save()
-    res.status(201).json(response) 
+    const blog = new Blog({
+      title: req.body.title,
+      author: req.body.author,
+      url: req.body.url,
+      likes: req.body.likes || 0,
+      user: user._id
+    })
+    const savedBlog = await blog.save()
+    user.blogs = user.blogs.concat(savedBlog._id)
+    await user.save()
+
+    res.status(201).json({
+      blog: savedBlog._id,
+      username: user.username,
+    }) 
   }
 
 }
