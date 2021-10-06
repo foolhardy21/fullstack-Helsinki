@@ -14,14 +14,7 @@ exports.postBlog = async function(req, res) {
   if(!req.body.title || !req.body.url) {
     res.status(400).send('Bad Request')
   } else {
-    const token = req.token
-    const decodedToken = jwt.verify(token, process.env.SECRET)
-    
-    if(!token || !decodedToken.id) {
-      res.status(401).send('invalid token')
-    }
-    
-    const user = await User.findById(decodedToken.id)
+    const user = req.user
 
     const blog = new Blog({
       title: req.body.title,
