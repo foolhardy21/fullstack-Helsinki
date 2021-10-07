@@ -1,18 +1,21 @@
 const notificationState = ''
 
 
-export const voteMessage = (text) => {
-    return {
-        type: 'VOTEFOR',
-        data: text
+export const showMessage = (text, duration) => {
+    console.log(text)
+    return async dispatch => {
+        dispatch({
+            type: 'SHOW',
+            data: text
+        })
+        setTimeout(() => {
+            dispatch({
+                type: 'HIDE'
+            })
+        },duration*1000)
     }
 }
-export const saveMessage = (text) => {
-    return {
-        type: 'SAVE',
-        data: text
-    }
-}
+
 export const hideMessage = () => {
     return {
         type: 'HIDE'
@@ -22,9 +25,7 @@ export const hideMessage = () => {
 const notificationReducer = (state=notificationState, action) => {
 
     switch(action.type) {
-        case 'SAVE': return `${action.data} is saved.`
-
-        case 'VOTEFOR': return `You voted for "${action.data}"`
+        case 'SHOW': return action.data
 
         case 'HIDE': return ''
         

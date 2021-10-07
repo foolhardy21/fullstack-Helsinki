@@ -1,23 +1,16 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewAnecdote } from '../reducers/anecdoteReducer'
-import { saveMessage, hideMessage } from '../reducers/notificationReducer'
-import { newAnecdote } from '../anecdoteService'
+import { showMessage } from '../reducers/notificationReducer'
 
 const AnecdoteForm = () => {
     const dispatch = useDispatch()
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         const anecdoteContent = e.target.anecdote.value 
-        const responseAnecdote = await newAnecdote(anecdoteContent)
-        dispatch(addNewAnecdote(responseAnecdote))
-        dispatch(saveMessage(anecdoteContent))
-        e.target.anecdote.value = ''
-        
-        setTimeout(() => {
-            dispatch(hideMessage())
-        },3000)
+        dispatch(addNewAnecdote(anecdoteContent))
+        dispatch(showMessage(`${anecdoteContent} is saved.`,3))
       }
       
     return (
