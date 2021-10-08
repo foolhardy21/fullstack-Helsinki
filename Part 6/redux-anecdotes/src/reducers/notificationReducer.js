@@ -1,33 +1,32 @@
-const notificationState = ''
-
+const notificationState = []
+let notificationId = 0
 
 export const showMessage = (text, duration) => {
-    console.log(text)
+    
     return async dispatch => {
+        const id = notificationId++
         dispatch({
             type: 'SHOW',
-            data: text
+            data: {
+                id: id,
+                text: text
+            }
         })
         setTimeout(() => {
             dispatch({
-                type: 'HIDE'
+                type: 'HIDE',
+                data: id
             })
         },duration*1000)
-    }
-}
-
-export const hideMessage = () => {
-    return {
-        type: 'HIDE'
     }
 }
 
 const notificationReducer = (state=notificationState, action) => {
 
     switch(action.type) {
-        case 'SHOW': return action.data
+        case 'SHOW': return [...state, action.data]  
 
-        case 'HIDE': return ''
+        case 'HIDE': return state.filter(notification => notification.id !== action.data) 
         
         default: return state
     }

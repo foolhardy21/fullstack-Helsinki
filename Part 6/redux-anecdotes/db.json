@@ -2,12 +2,12 @@
   "anecdotes": [
     {
       "text": "If it hurts, do it more often",
-      "votes": 6,
+      "votes": 34,
       "id": 0
     },
     {
       "text": "Adding manpower to a late software project makes it later!",
-      "votes": 5,
+      "votes": 6,
       "id": 1
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "text": "Premature optimization is the root of all evil.",
-      "votes": 0,
+      "votes": 3,
       "id": 4
     },
     {
@@ -32,12 +32,8 @@
     },
     {
       "text": "sample anecdote",
-      "votes": 0,
+      "votes": 3,
       "id": 6
-    },
-    {
-      "text": "asd",
-      "id": 7
     }
   ]
 }
