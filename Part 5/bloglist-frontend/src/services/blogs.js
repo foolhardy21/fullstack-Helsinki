@@ -16,3 +16,13 @@ export const getLoginToken = async (username, password) => {
     }
 }
 
+export const postBlog = async (token, blog) => {
+  const config = {
+    headers: {
+      Authorization: `bearer ${token}`
+    }
+  }
+  const response = await axios.post(baseUrl, blog, config)
+  return response.data
+}
+
