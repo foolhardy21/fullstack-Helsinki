@@ -7,7 +7,7 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
+  const [message, setMessage] = useState('')
 
   async function getAllBlogs() {
     let blogsResponse = await getAll()
@@ -22,9 +22,9 @@ const App = () => {
   }
   
   function showNotification(text, duration) {
-    setErrorMessage(text)
+    setMessage(text)
       setTimeout(() => {
-        setErrorMessage('')
+        setMessage('')
       },duration)
   }
   
@@ -70,7 +70,7 @@ const App = () => {
         <h2>blogs</h2>
         <p>{user.username} logged in</p>
         <button onClick={logOut}>logout</button>
-        <p>{errorMessage}</p>
+        <p style={{color: 'green'}}>{message}</p>
         <form onSubmit={handleBlogSubmit}>
           <label htmlFor='title'>title</label>
           <input name='title' type='text'/><br/>
@@ -90,7 +90,7 @@ const App = () => {
     return (
       <div>
         <h2>log in to application</h2>
-        <p>{errorMessage}</p>
+        <p style={{color: 'red'}}>{message}</p>
         <form onSubmit={handleLoginSubmit}>
           <label htmlFor='username_input'>username</label>
           <input type='text' name='username_input' value={username} onChange={(e) => setUsername(e.target.value)}/><br/>
