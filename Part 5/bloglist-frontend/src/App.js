@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Blog from './components/Blog'
+import BlogList from './components/BlogList'
+import CreateBlog from './components/CreateBlog'
+import Login from './components/Login'
 import {getAll, getLoginToken, postBlog} from './services/blogs'
 
 const App = () => {
@@ -67,40 +69,29 @@ const App = () => {
   if(user) {
     return (
       <div>
-        <h2>blogs</h2>
-        <p>{user.username} logged in</p>
-        <button onClick={logOut}>logout</button>
-        <p style={{color: 'green'}}>{message}</p>
-        <form onSubmit={handleBlogSubmit}>
-          <label htmlFor='title'>title</label>
-          <input name='title' type='text'/><br/>
-          <label htmlFor='author'>author</label>
-          <input name='author' type='text'/><br/>
-          <label htmlFor='url'>url</label>
-          <input name='url' type='text'/><br/>
-          <input type='submit' value='add' />
-        </form>
-
-        {
-          blogs.map(blog => <Blog key={blog._id} blog={blog} />)
-        }
-      </div>
-    )
-  } else if(!user) {
-    return (
-      <div>
-        <h2>log in to application</h2>
-        <p style={{color: 'red'}}>{message}</p>
-        <form onSubmit={handleLoginSubmit}>
-          <label htmlFor='username_input'>username</label>
-          <input type='text' name='username_input' value={username} onChange={(e) => setUsername(e.target.value)}/><br/>
-          <label htmlFor='password_input'>password</label>
-          <input type='password' name='password_input' value={password} onChange={(e) => setPassword(e.target.value)}/><br/>
-          <input type='submit' value='login'/>
-        </form>
+        <CreateBlog
+        user={user}
+        message={message}
+        handleBlogSubmit={handleBlogSubmit}
+        logOut={logOut}
+        />
+        <BlogList blogs={blogs} />
       </div>
     )
   }
+  return (
+      <div>
+        <Login
+        message={message}
+        handleLoginSubmit={handleLoginSubmit}
+        username={username}
+        password={password}
+        setUsername={setUsername}
+        setPassword={setPassword} 
+        />
+      </div>
+   )
+  
 }
 
 export default App
