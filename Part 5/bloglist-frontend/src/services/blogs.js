@@ -31,3 +31,15 @@ export const likeBlog = async (blogId, blogObj) => {
   const response = await axios.put(updateUrl, blogObj)
   return response.data
 }
+
+export const deleteBlog = async (blogId, token) => {
+  const deleteUrl = baseUrl+`/${blogId}`
+  const config = {
+    headers: {
+      Authorization: `bearer ${token}`
+    }
+  }
+  
+  const response = await axios.delete(deleteUrl, config, blogId)
+  return response.data
+}

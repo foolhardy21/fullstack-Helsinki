@@ -75,7 +75,8 @@ const App = () => {
         handleBlogSubmit={handleBlogSubmit}
         logOut={logOut}
         />
-        <BlogList 
+        <BlogList
+        token={user.token} 
         blogs={blogs}
         getAllBlogs={getAllBlogs} 
         />

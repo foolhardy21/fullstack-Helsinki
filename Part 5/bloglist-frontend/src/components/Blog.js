@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import {likeBlog} from '../services/blogs'
+import {likeBlog, deleteBlog} from '../services/blogs'
 
-const Blog = ({blog, getAllBlogs}) => {
+const Blog = ({blog, getAllBlogs, token}) => {
   const [blogVisible, setBlogVisible] = useState(false)
 
-  async function updateLikes() {
+  async function handleLike() {
     const blogObj = {
       title: blog.title,
       author: blog.author,
@@ -15,16 +15,23 @@ const Blog = ({blog, getAllBlogs}) => {
     await likeBlog(blog._id, blogObj)
     getAllBlogs()
   }
+  async function handleDelete() {
+    await deleteBlog(blog._id, token)
+    getAllBlogs()
+  }
+
   return (
     <div>
-        {blog.title} {blog.author}
+        <br/><hr/>
+        {blog.title}<br/>{blog.author}
         <button onClick={() => setBlogVisible(!blogVisible)}>
-          {blogVisible ? 'hide' : 'show'}
+          {blogVisible ? 'hide' : 'more'}
         </button>
         <div style={{display: blogVisible ? '' : 'none'}}>
-          <p>{blog.url}</p>
+          {blog.url}<br/>
           {blog.likes}
-          <button onClick={updateLikes}>like</button>
+          <button onClick={handleLike}>like</button><br/>
+          <button onClick={handleDelete}>delete blog</button>
         </div>
     </div>  
   )

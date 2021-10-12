@@ -58,8 +58,6 @@ exports.deleteBlog = async function(req, res, next) {
 }
 
 exports.updateBlog = async function(req, res, next) {
-  // const blogId = req.params.id
-  // const blog = await Blog.findById(blogId)
   
   const user = await User.findOne({username: req.body.username})
   const blog = {
