@@ -75,7 +75,10 @@ const App = () => {
         handleBlogSubmit={handleBlogSubmit}
         logOut={logOut}
         />
-        <BlogList blogs={blogs} />
+        <BlogList 
+        blogs={blogs}
+        getAllBlogs={getAllBlogs} 
+        />
       </div>
     )
   }

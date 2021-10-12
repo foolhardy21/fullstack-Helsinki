@@ -26,3 +26,8 @@ export const postBlog = async (token, blog) => {
   return response.data
 }
 
+export const likeBlog = async (blogId, blogObj) => {
+  const updateUrl = baseUrl+`/${blogId}`
+  const response = await axios.put(updateUrl, blogObj)
+  return response.data
+}

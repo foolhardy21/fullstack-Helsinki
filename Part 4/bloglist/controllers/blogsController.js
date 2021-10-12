@@ -10,7 +10,7 @@ exports.getAllBlogs = async function(req, res) {
 }
 
 exports.postBlog = async function(req, res) {
-  
+
   if(!req.body.title || !req.body.url) {
     res.status(400).send('Bad Request')
   } else {
@@ -58,19 +58,17 @@ exports.deleteBlog = async function(req, res, next) {
 }
 
 exports.updateBlog = async function(req, res, next) {
+  // const blogId = req.params.id
+  // const blog = await Blog.findById(blogId)
+  
   const user = await User.findOne({username: req.body.username})
-    const blog = user ? {
+  const blog = {
       title: req.body.title,
       author: req.body.author,
       url: req.body.url,
       likes: req.body.likes || 0,
       user: user._id,
-    } : {
-      title: req.body.title,
-      author: req.body.author,
-      url: req.body.url,
-      likes: req.body.likes || 0,
-    }
+  } 
 
   await Blog.findByIdAndUpdate(req.params.id, blog, {new: true}, (err, result) => {
     if(err){
