@@ -1,9 +1,9 @@
 import React from 'react'
-import Blog from './Blog'
+import Blog from './Blog/Blog'
 
 const BlogList = (props) => {
     const blogs = props.blogs.sort((a,b) => b.likes-a.likes)
-    
+
     return (
         <>{
             blogs.map(blog => <Blog 

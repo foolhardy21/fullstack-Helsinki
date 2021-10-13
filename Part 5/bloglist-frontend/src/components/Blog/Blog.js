@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {likeBlog, deleteBlog} from '../services/blogs'
+import {likeBlog, deleteBlog} from '../../services/blogs'
 
 const Blog = ({blog, getAllBlogs, token}) => {
   const [blogVisible, setBlogVisible] = useState(false)
@@ -27,7 +27,7 @@ const Blog = ({blog, getAllBlogs, token}) => {
         <button onClick={() => setBlogVisible(!blogVisible)}>
           {blogVisible ? 'hide' : 'more'}
         </button>
-        <div style={{display: blogVisible ? '' : 'none'}}>
+        <div id='infodiv' style={{display: blogVisible ? '' : 'none'}}>
           {blog.url}<br/>
           {blog.likes}
           <button onClick={handleLike}>like</button><br/>
