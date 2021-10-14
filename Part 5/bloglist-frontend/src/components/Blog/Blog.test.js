@@ -44,4 +44,29 @@ describe('Blog component rendering', () => {
         expect(component.container.querySelector('#infodiv')).toBeVisible()
     })
 
+    test('props event handler is called when like button is clicked', () => {
+        const getAllBlogs = jest.fn()
+        const blog = {
+            title: 'test title',
+            author: 'test author',
+            url: 'test url',
+            likes: 100,
+            user: {
+                username: 'test username' 
+            } 
+        }
+        const token='testtoken'
+
+        const component = render(
+            <Blog blog={blog} getAllBlogs={getAllBlogs} token={token} />
+        )
+        const moreBtn = component.getByText('more')
+        fireEvent.click(moreBtn)
+        const likeBtn = component.getByText('like')
+        fireEvent.click(likeBtn)
+        fireEvent.click(likeBtn)
+
+        expect(getAllBlogs.mock.calls).toHaveLength(2) 
+    })
+
 })
