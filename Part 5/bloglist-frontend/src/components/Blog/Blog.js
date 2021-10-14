@@ -12,8 +12,7 @@ const Blog = ({blog, getAllBlogs, token}) => {
       likes: blog.likes+1,
       username: blog.user.username
     }
-    // await likeBlog(blog._id, blogObj)
-    // console.log(blog, token)
+    await likeBlog(blog._id, blogObj)
     getAllBlogs()
   }
   async function handleDelete() {

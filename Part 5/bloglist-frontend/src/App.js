@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import BlogList from './components/BlogList'
-import CreateBlog from './components/CreateBlog'
+import CreateBlog from './components/CreateBlog/CreateBlog'
 import Login from './components/Login'
 import {getAll, getLoginToken, postBlog} from './services/blogs'
 
