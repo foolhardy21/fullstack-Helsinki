@@ -1,12 +1,18 @@
 /* eslint-disable no-undef */
 describe('blog E2E', function() {
+    
+    const correctUser = {
+        username: 'username1',
+        name: 'name1',
+        password: 'pass1'
+    }
 
     beforeEach(function() {
         cy.request('POST', 'http://localhost:3003/api/testing/reset')
         cy.request('POST','http://localhost:3003/api/users',{
-            username: 'username1',
-            name:'name1',
-            password: 'pass1'
+            username: correctUser.username,
+            name:correctUser.name,
+            password: correctUser.password
         })
         cy.visit('http://localhost:3000')
     })
@@ -16,11 +22,8 @@ describe('blog E2E', function() {
         cy.contains('username')
         cy.contains('password')
     })
-    describe('login form works correctly', function() {
-        const correctUser = {
-            username: 'username1',
-            password: 'pass1'
-        }
+
+    describe('login works correctly', function() {
         const wrongUser = {
             username: 'user',
             password: 'pass'
@@ -37,6 +40,37 @@ describe('blog E2E', function() {
             cy.get('#loginBtn').click()
             cy.contains('invalid')
             cy.contains('log in to application')
+        })
+    })
+
+    describe('create blog works correctly', function() {
+        beforeEach( async function() {
+            const response = await cy.request('POST', 'http://localhost:3003/api/login', {
+                username: correctUser.username,
+                password: correctUser.password
+            })
+            localStorage.setItem('user', JSON.stringify(response.body))
+            cy.visit('http://localhost:3000')
+        })
+        it('posting a blog', function() {
+            const blog = {
+                title: 'title1',
+                author: 'author1',
+                likes: 1,
+                url: 'url1'
+            }
+            const user = JSON.parse(window.localStorage.getItem('user'))
+            Cypress.Commands.add('createBlog', ( blog ) => {
+                cy.request({
+                    url: 'http://localhost:3003/api/blogs',
+                    method: 'POST',
+                    body: blog,
+                    headers: {
+                        'Authorization': `bearer ${user.token}`
+                    }
+                })
+            })
+            cy.createBlog(blog)
         })
     })
 })

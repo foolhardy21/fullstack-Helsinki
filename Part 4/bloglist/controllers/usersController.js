@@ -20,7 +20,6 @@ exports.getAllUsers = async function(req, res) {
         username: req.body.username,
         name: req.body.name,
         passwordHash: await bcrypt.hash(req.body.password, 10),
-        // blogs: blogIds,
       })
       await user.save((err, result) => {
         if(err) {
