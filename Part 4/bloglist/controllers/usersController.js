@@ -10,17 +10,17 @@ exports.getAllUsers = async function(req, res) {
   exports.postUser = async function(req, res) {
   
     if (req.body.password && req.body.password.length >= 3) {
-      let blogIds = []
-      req.body.blogs.forEach( async (blog) => {
-        const response = await Blog.findOne({title: blog})
-        blogIds.push(response._id)
-      })
+      // let blogIds = []
+      // req.body.blogs.forEach( async (blog) => {
+      //   const response = await Blog.findOne({title: blog})
+      //   blogIds.push(response._id)
+      // })
       
       const user = new User({
         username: req.body.username,
         name: req.body.name,
         passwordHash: await bcrypt.hash(req.body.password, 10),
-        blogs: blogIds,
+        // blogs: blogIds,
       })
       await user.save((err, result) => {
         if(err) {
