@@ -29,3 +29,23 @@ Participants are expected to have good programming skills, basic knowledge of we
 - Saving data to MongoDB
 - Validation and ESLint
 - [Part 3 Exercises can be found here](https://github.com/foolhardy21/part3-helsinki-fullstack)
+
+## Part 4
+- Structure of a backend application
+- Testing the backend
+- User administration
+- Token authentication
+
+## Part 5
+- Login in frontend
+- props.children and prototypes
+- Testing React apps
+- End to End testing
+
+## Part 6
+- Flux architecture and Redux
+- Many reducers
+- Communicating with server in a redux
+- connect
+
+![Certificate of Completion](./certificate.png)
