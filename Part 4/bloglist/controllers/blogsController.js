@@ -10,7 +10,6 @@ exports.getAllBlogs = async function(req, res) {
 }
 
 exports.postBlog = async function(req, res) {
-
   if(!req.body.title || !req.body.url) {
     res.status(400).send('Bad Request')
   } else {

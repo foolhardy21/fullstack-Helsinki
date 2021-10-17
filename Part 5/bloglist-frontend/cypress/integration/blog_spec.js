@@ -43,7 +43,7 @@ describe('blog E2E', function() {
         })
     })
 
-    describe('create blog works correctly', function() {
+    describe('blogs page works correctly', function() {
         beforeEach( async function() {
             const response = await cy.request('POST', 'http://localhost:3003/api/login', {
                 username: correctUser.username,
@@ -72,5 +72,31 @@ describe('blog E2E', function() {
             })
             cy.createBlog(blog)
         })
+        it('like a blog', async function() {
+            const blog = {
+                title: 'title1',
+                author: 'author1',
+                likes: 1,
+                url: 'url1'
+            }
+            const user = JSON.parse(window.localStorage.getItem('user'))
+            Cypress.Commands.add('createBlog', ( blog ) => {
+                cy.request({
+                    url: 'http://localhost:3003/api/blogs',
+                    method: 'POST',
+                    body: blog,
+                    headers: {
+                        'Authorization': `bearer ${user.token}`
+                    }
+                })
+            })
+            cy.createBlog(blog)
+
+            cy.contains('more').click()
+            cy.contains('like').click()
+            cy.get('#infodiv').contains(`2`)
+        })
     })
+
+
 })
