@@ -45,22 +45,16 @@ const App = () => {
 
     setAnecdotes(anecdotes.map(a => a.id === id ? voted : a))
   }
-  // console.log(useParams())
-  // console.log(useLocation())
-  // const match = useRouteMatch('/:id')
-  // const anecdote = match 
-  //     ? anecdotes.find(anecdote => anecdote.id ===Number(match.params.id))
-  //     : null
   
   return (
     <div>
       <h1>Software anecdotes</h1>
       <Router>
-        <Menu />
+        <Menu notification={notification} />
         <Switch>
 
           <Route path='/create'>
-            <CreateNew addNew={addNew} />
+            <CreateNew addNew={addNew} setNotification={setNotification}/>
           </Route>
           
           <Route path='/about'>
