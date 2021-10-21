@@ -1,10 +1,11 @@
 import React from 'react'
+import Notification from './Notification'
 
 const Login = (props) => {
     return (
         <>
         <h2>log in to application</h2>
-        <p style={{color: 'red'}}>{props.message}</p>
+        <Notification />
         <form onSubmit={props.handleLoginSubmit}>
           <label htmlFor='username_input'>username</label>
           <input type='text' name='username_input' value={props.username} onChange={(e) => props.setUsername(e.target.value)}/><br/>

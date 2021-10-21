@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
+import { useDispatch } from 'react-redux'
 import {likeBlog, deleteBlog} from '../../services/blogs'
+import { showNotification } from '../../reducers/notificationReducer'
 
 const Blog = ({blog, getAllBlogs, token}) => {
   const [blogVisible, setBlogVisible] = useState(false)
-
+  const dispatch = useDispatch()
+  
   async function handleLike() {
     const blogObj = {
       title: blog.title,
@@ -17,6 +20,7 @@ const Blog = ({blog, getAllBlogs, token}) => {
   }
   async function handleDelete() {
     await deleteBlog(blog._id, token)
+    dispatch(showNotification(`blog deleted`))
     getAllBlogs()
   }
 

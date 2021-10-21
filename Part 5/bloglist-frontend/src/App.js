@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import BlogList from './components/BlogList'
 import CreateBlog from './components/CreateBlog/CreateBlog'
 import Login from './components/Login'
+import Header from './components/Header'
 import {getAll, getLoginToken, postBlog} from './services/blogs'
 import { showNotification } from './reducers/notificationReducer'
 
@@ -11,7 +12,6 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState('')
-  // const [message, setMessage] = useState('')
   const dispatch = useDispatch()
 
   async function getAllBlogs() {
@@ -26,18 +26,13 @@ const App = () => {
     setBlogs('')
   }
   
-  // function showNotification(text, duration) {
-  //   setMessage(text)
-  //     setTimeout(() => {
-  //       setMessage('')
-  //     },duration)
-  // }
   
   async function handleLoginSubmit(e) {
     e.preventDefault()
     const loginResponse = await getLoginToken(username, password)
     if(loginResponse.error) {
       showNotification(loginResponse.error, 3000)
+      dispatch(showNotification(`${loginResponse.error}`))
     } else if(loginResponse.token) {
       window.localStorage.setItem('user', JSON.stringify(loginResponse))
       setUser(loginResponse)
@@ -72,11 +67,9 @@ const App = () => {
   if(user) {
     return (
       <div>
+        <Header username={user.username} logOut={logOut} />
         <CreateBlog
-        user={user}
-        // message={message}
         handleBlogSubmit={handleBlogSubmit}
-        logOut={logOut}
         />
         <BlogList
         token={user.token} 
@@ -89,7 +82,6 @@ const App = () => {
   return (
       <div>
         <Login
-        // message={message}
         handleLoginSubmit={handleLoginSubmit}
         username={username}
         password={password}

@@ -1,23 +1,10 @@
 import React, {useState} from 'react'
-import { useSelector } from 'react-redux'
 
 const CreateBlog = (props) => {
     const [formVisible, setFormVisible] = useState(false)
-    const notifications = useSelector(state => state)
-    console.log('notifications in form component',notifications)
+    
     return (
         <>
-        <h2>blogs</h2>
-        <p>{props.user.username} logged in</p>
-        <button 
-         onClick={props.logOut}
-         >
-             logout
-        </button>
-        {
-            notifications > 0 && 
-            <p style={{color: 'green'}}>{notifications[0].text}</p>
-        }
         <button 
          style={{display: formVisible ? 'none' : ''}}
          onClick={() => setFormVisible(true)}
