@@ -16,12 +16,10 @@ const Blog = ({blog, getAllBlogs, token}) => {
       username: blog.user.username
     }
     await likeBlog(blog._id, blogObj)
-    getAllBlogs()
   }
   async function handleDelete() {
     await deleteBlog(blog._id, token)
     dispatch(showNotification(`blog deleted`))
-    getAllBlogs()
   }
 
   return (

@@ -21,7 +21,7 @@ export const showNotification = (text) => {
     }
 }
 
-export const notificationReducer = (state = notifications, action) => {
+const notificationReducer = (state = notifications, action) => {
 
     switch(action.type) {
         case 'SHOW': return [...state, action.data]
@@ -31,3 +31,5 @@ export const notificationReducer = (state = notifications, action) => {
         default: return state
     }
 }
+
+export default notificationReducer

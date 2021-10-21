@@ -27,7 +27,7 @@ exports.postBlog = async function(req, res) {
     await user.save()
 
     res.status(201).json({
-      blog: savedBlog._id,
+      blog: savedBlog,
       username: user.username,
     }) 
   }

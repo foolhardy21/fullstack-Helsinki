@@ -39,7 +39,6 @@ export const deleteBlog = async (blogId, token) => {
       Authorization: `bearer ${token}`
     }
   }
-  
   const response = await axios.delete(deleteUrl, config, blogId)
   return response.data
 }
