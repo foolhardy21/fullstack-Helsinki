@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import BlogList from './components/BlogList'
 import CreateBlog from './components/CreateBlog/CreateBlog'
 import Login from './components/Login'
 import {getAll, getLoginToken, postBlog} from './services/blogs'
+import { showNotification } from './reducers/notificationReducer'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState('')
-  const [message, setMessage] = useState('')
+  // const [message, setMessage] = useState('')
+  const dispatch = useDispatch()
 
   async function getAllBlogs() {
     let blogsResponse = await getAll()
@@ -23,12 +26,12 @@ const App = () => {
     setBlogs('')
   }
   
-  function showNotification(text, duration) {
-    setMessage(text)
-      setTimeout(() => {
-        setMessage('')
-      },duration)
-  }
+  // function showNotification(text, duration) {
+  //   setMessage(text)
+  //     setTimeout(() => {
+  //       setMessage('')
+  //     },duration)
+  // }
   
   async function handleLoginSubmit(e) {
     e.preventDefault()
@@ -51,7 +54,7 @@ const App = () => {
       url: e.target.url.value,
     }
     const response = await postBlog(user.token, blogObj)
-    showNotification(`blog saved by ${response.username}`, 3000)
+    dispatch(showNotification(`blog saved by ${response.username}`))
     getAllBlogs()
   }
   
@@ -71,7 +74,7 @@ const App = () => {
       <div>
         <CreateBlog
         user={user}
-        message={message}
+        // message={message}
         handleBlogSubmit={handleBlogSubmit}
         logOut={logOut}
         />
@@ -86,7 +89,7 @@ const App = () => {
   return (
       <div>
         <Login
-        message={message}
+        // message={message}
         handleLoginSubmit={handleLoginSubmit}
         username={username}
         password={password}
