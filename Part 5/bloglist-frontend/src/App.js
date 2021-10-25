@@ -4,31 +4,31 @@ import BlogList from './components/BlogList'
 import CreateBlog from './components/CreateBlog/CreateBlog'
 import Login from './components/Login'
 import Header from './components/Header'
-import { getLoginToken } from './services/blogs'
 import { showNotification } from './reducers/notificationReducer'
 import { initialiseBlogs, createNewBlog } from './reducers/blogsReducer'
+import { fetchLocalUser, getUser, logOutUser } from './reducers/loginReducer'
+import { useSelector } from 'react-redux'
 
 const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [user, setUser] = useState('')
+  const user = useSelector(state => state.login)
   const dispatch = useDispatch()
 
   function logOut() {
-    window.localStorage.removeItem('user')
-    setUser('')
+    dispatch(logOutUser())
   }
   
   
-  async function handleLoginSubmit(e) {
+  function handleLoginSubmit(e) {
     e.preventDefault()
-    const loginResponse = await getLoginToken(username, password)
-    if(loginResponse.error) {
-      dispatch(showNotification(`${loginResponse.error}`))
-    } else if(loginResponse.token) {
-      window.localStorage.setItem('user', JSON.stringify(loginResponse))
-      setUser(loginResponse)
-    }
+
+    dispatch(getUser(username, password))
+    // if(user && !user.token) {
+    //   dispatch(showNotification(`${user}`))
+    // }
+    //update notification of invalid credentials only in case of login fail
+    //initialise blogs only in case of login success and no login
     setUsername('')
     setPassword('')
   }
@@ -45,13 +45,13 @@ const App = () => {
   }
   
   useEffect(() => {
-    const savedUser = window.localStorage.getItem('user')
-    if(savedUser) {
-      setUser(JSON.parse(savedUser))
-    }
+    dispatch(fetchLocalUser())
   }, [])
   useEffect(() => {
-    dispatch(initialiseBlogs(user.username))
+    if(user) {
+      console.log('fetching blogs')
+      dispatch(initialiseBlogs(user.username))
+    }
   },[user])
   
   
