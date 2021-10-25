@@ -1,24 +1,24 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
-import {likeBlog, deleteBlog} from '../../services/blogs'
 import { showNotification } from '../../reducers/notificationReducer'
+import { deleteTheBlog, likeTheBlog } from '../../reducers/blogsReducer'
 
-const Blog = ({blog, getAllBlogs, token}) => {
+const Blog = ({blog, user, token}) => {
   const [blogVisible, setBlogVisible] = useState(false)
   const dispatch = useDispatch()
   
-  async function handleLike() {
+  function handleLike() {
     const blogObj = {
       title: blog.title,
       author: blog.author,
       url: blog.url,
       likes: blog.likes+1,
-      username: blog.user.username
+      username: user.username
     }
-    await likeBlog(blog._id, blogObj)
+    dispatch(likeTheBlog(blog._id, blogObj))
   }
-  async function handleDelete() {
-    await deleteBlog(blog._id, token)
+  function handleDelete() {
+    dispatch(deleteTheBlog(blog._id, token))
     dispatch(showNotification(`blog deleted`))
   }
 

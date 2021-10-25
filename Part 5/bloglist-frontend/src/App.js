@@ -64,6 +64,7 @@ const App = () => {
         />
         <BlogList
         token={user.token} 
+        user={user}
         />
       </div>
     )

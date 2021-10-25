@@ -9,7 +9,8 @@ const BlogList = (props) => {
         <>{
             blogs.map(blog => <Blog 
                 key={blog._id} 
-                blog={blog} 
+                blog={blog}
+                user={props.user} 
                 token={props.token}
                 />
             )
