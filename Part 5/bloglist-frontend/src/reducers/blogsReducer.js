@@ -55,7 +55,7 @@ export const likeTheBlog = (blogId, blog) => {
 export const deleteTheBlog = (blogId, token) => {
     return async dispatch => {
         const response = await deleteBlog(blogId, token)
-        console.log(response)
+        
         dispatch({
             type: 'DELETE',
             data: response._id

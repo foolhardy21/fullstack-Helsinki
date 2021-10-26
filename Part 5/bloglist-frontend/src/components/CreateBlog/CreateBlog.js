@@ -1,7 +1,23 @@
 import React, {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { createNewBlog } from '../../reducers/blogsReducer'
+import { showNotification } from '../../reducers/notificationReducer'
 
-const CreateBlog = (props) => {
+const CreateBlog = () => {
     const [formVisible, setFormVisible] = useState(false)
+    const user = useSelector(state => state.login)
+    const dispatch = useDispatch()
+
+    function handleBlogSubmit(e) {
+        e.preventDefault()
+        const blogObj = {
+          title: e.target.title.value,
+          author: e.target.author.value,
+          url: e.target.url.value,
+        }
+        dispatch(createNewBlog(user.data.token, blogObj))
+        dispatch(showNotification(`blog saved by`)) 
+    }
     
     return (
         <>
@@ -13,7 +29,7 @@ const CreateBlog = (props) => {
         </button>
         <div style={{display: formVisible ? '' : 'none'}}>
             <form
-            onSubmit={props.handleBlogSubmit}
+            onSubmit={handleBlogSubmit}
             >
             <label htmlFor='title'>title</label>
             <input name='title' type='text'/><br/>

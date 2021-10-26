@@ -1,6 +1,7 @@
 import axios from 'axios'
 const baseUrl = 'api/blogs'
 const loginUrl = 'api/login'
+const usersUrl = 'api/users'
 
 export const getAll = async () => {
   const response = await axios.get(baseUrl)
@@ -40,5 +41,10 @@ export const deleteBlog = async (blogId, token) => {
     }
   }
   const response = await axios.delete(deleteUrl, config, blogId)
+  return response.data
+}
+
+export const getAllUsers = async () => {
+  const response = await axios.get(usersUrl)
   return response.data
 }
