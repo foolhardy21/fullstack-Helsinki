@@ -14,21 +14,15 @@ const App = () => {
   const [password, setPassword] = useState('')
   const user = useSelector(state => state.login)
   const dispatch = useDispatch()
-
+  
   function logOut() {
     dispatch(logOutUser())
   }
-  
   
   function handleLoginSubmit(e) {
     e.preventDefault()
 
     dispatch(getUser(username, password))
-    // if(user && !user.token) {
-    //   dispatch(showNotification(`${user}`))
-    // }
-    //update notification of invalid credentials only in case of login fail
-    //initialise blogs only in case of login success and no login
     setUsername('')
     setPassword('')
   }
@@ -40,7 +34,7 @@ const App = () => {
       author: e.target.author.value,
       url: e.target.url.value,
     }
-    dispatch(createNewBlog(user.token, blogObj))
+    dispatch(createNewBlog(user.data.token, blogObj))
     dispatch(showNotification(`blog saved by`)) 
   }
   
@@ -48,23 +42,28 @@ const App = () => {
     dispatch(fetchLocalUser())
   }, [])
   useEffect(() => {
-    if(user) {
-      console.log('fetching blogs')
-      dispatch(initialiseBlogs(user.username))
+
+    if(user.loginSuccess === true) {
+      dispatch(initialiseBlogs(user.data.username))
+    } else if(user.invalidCred.length > 0) {
+      dispatch(showNotification(`${user.invalidCred}`))
+    } else if(user.logOutClicked) {
+      console.log('loggedOut')
     }
+
   },[user])
   
   
-  if(user) {
+  if(user.data) {
     return (
       <div>
-        <Header username={user.username} logOut={logOut} />
+        <Header username={user.data.username} logOut={logOut} />
         <CreateBlog
         handleBlogSubmit={handleBlogSubmit}
         />
         <BlogList
-        token={user.token} 
-        user={user}
+        token={user.data.token} 
+        user={user.data}
         />
       </div>
     )
