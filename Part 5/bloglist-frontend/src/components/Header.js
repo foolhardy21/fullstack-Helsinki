@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import {Link} from 'react-router-dom'
 import Notification from './Notification'
 import { logOutUser } from '../reducers/loginReducer'
 
@@ -14,11 +15,11 @@ const Header = () => {
         <>
             <h2>blogs</h2>
             <p>{user.data.username} logged in</p>
-            <button 
-            onClick={logOut}
-            >
-                logout
-            </button>
+            <Link to='/'>
+                <button onClick={logOut}>
+                    logout
+                </button>
+            </Link>
             <Notification />
         </>
     )

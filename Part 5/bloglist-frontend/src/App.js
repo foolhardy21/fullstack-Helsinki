@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Users from './components/Users'
+import User from './components/User'
 import BlogList from './components/BlogList'
 import CreateBlog from './components/CreateBlog/CreateBlog'
 import Login from './components/Login'
@@ -25,21 +26,23 @@ const App = () => {
       dispatch(showNotification(`${user.invalidCred}`))
     }
 
-  },[user])
+  },[user, dispatch])
   
   
   if(user.data) {
     return (
       <div>
-        <Header />
-        
         <Router>
+          <Header />
           <Link to='/myblogs'>my blogs</Link>
           <Link to='/users'>users</Link>
           <Switch>
             <Route path='/myblogs'>
               <CreateBlog />
               <BlogList />
+            </Route>
+            <Route path='/users/:userid'>
+              <User />
             </Route>
             <Route path='/users'>
               <Users />
