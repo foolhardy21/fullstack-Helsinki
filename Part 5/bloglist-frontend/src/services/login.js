@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'api/login'
+const baseUrl = 'http://localhost:3003/api/login'
 
 export const getLoginToken = async (username, password) => {
     try {

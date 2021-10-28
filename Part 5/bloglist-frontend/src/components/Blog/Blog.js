@@ -1,12 +1,15 @@
-import React, {useState} from 'react'
+import React from 'react'
+import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { showNotification } from '../../reducers/notificationReducer'
 import { deleteTheBlog, likeTheBlog } from '../../reducers/blogsReducer'
 
-const Blog = ({blog}) => {
-  const [blogVisible, setBlogVisible] = useState(false)
+const Blog = () => {
+  const {blogid} = useParams()
   const user = useSelector(state => state.login)
+  const blogs = useSelector(state => state.blogs)
   const dispatch = useDispatch()
+  const blog = blogs.find(blog => blog._id === blogid)
   
   function handleLike() {
     const blogObj = {
@@ -23,19 +26,19 @@ const Blog = ({blog}) => {
     dispatch(showNotification(`blog deleted`))
   }
 
+  if(!blog) {
+    return null
+  }
   return (
     <div>
-        <br/><hr/>
-        {blog.title}<br/>{blog.author}
-        <button onClick={() => setBlogVisible(!blogVisible)}>
-          {blogVisible ? 'hide' : 'more'}
-        </button>
-        <div id='infodiv' style={{display: blogVisible ? '' : 'none'}}>
-          {blog.url}<br/>
-          {blog.likes}
-          <button onClick={handleLike}>like</button><br/>
-          <button onClick={handleDelete}>delete blog</button>
-        </div>
+        <br/>
+        <h2>{blog.title}</h2>
+        {blog.url}<br/>
+        {blog.likes}
+        <button onClick={handleLike}>like</button><br/>
+        by {blog.author}
+        <button onClick={handleDelete}>delete blog</button>
+        
     </div>  
   )
 

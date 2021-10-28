@@ -67,12 +67,13 @@ const blogsReducer = (state=blogs, action) => {
     switch(action.type) {
         case 'INIT_BLOGS': return action.data
         case 'NEW_BLOG': return [...state, action.data]
-        case 'LIKE': return state.map(blog => {
+        case 'LIKE': const newblogs = state.map(blog => {
             if(blog._id === action.data) {
                 blog.likes+=1
             }
             return blog
-        })
+        }) 
+        return newblogs
         case 'DELETE': return state.filter(blog => blog._id !== action.data)
         default: return state
     }

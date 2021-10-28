@@ -10,6 +10,7 @@ import Header from './components/Header'
 import { showNotification } from './reducers/notificationReducer'
 import { initialiseBlogs } from './reducers/blogsReducer'
 import { fetchLocalUser } from './reducers/loginReducer'
+import Blog from './components/Blog/Blog'
 
 const App = () => {
   const user = useSelector(state => state.login)
@@ -37,6 +38,9 @@ const App = () => {
           <Link to='/myblogs'>my blogs</Link>
           <Link to='/users'>users</Link>
           <Switch>
+            <Route path='/myblogs/:blogid'>
+              <Blog />
+            </Route>
             <Route path='/myblogs'>
               <CreateBlog />
               <BlogList />

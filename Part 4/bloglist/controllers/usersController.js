@@ -1,22 +1,15 @@
-const Blog = require('../models/Blog')
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
 exports.getAllUsers = async function(req, res) {
     const response = await User.find({}).populate('blogs', { title: 1, author: 1, url: 1 })
     res.status(200).json(response)
-  }
+}
   
-  exports.postUser = async function(req, res) {
+exports.postUser = async function(req, res) {
   
     if (req.body.password && req.body.password.length >= 3) {
-      // let blogIds = []
-      // req.body.blogs.forEach( async (blog) => {
-      //   const response = await Blog.findOne({title: blog})
-      //   blogIds.push(response._id)
-      // })
-      
-      const user = new User({
+        const user = new User({
         username: req.body.username,
         name: req.body.name,
         passwordHash: await bcrypt.hash(req.body.password, 10),
@@ -32,4 +25,4 @@ exports.getAllUsers = async function(req, res) {
       res.status(400).send('Password should have atleast 3 chars')
     }
     
-  }
+}
