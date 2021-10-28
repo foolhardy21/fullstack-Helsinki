@@ -6,7 +6,7 @@ import User from './components/User'
 import BlogList from './components/BlogList'
 import CreateBlog from './components/CreateBlog/CreateBlog'
 import Login from './components/Login'
-import Header from './components/Header'
+import Header from './components/Header/Header'
 import { showNotification } from './reducers/notificationReducer'
 import { initialiseBlogs } from './reducers/blogsReducer'
 import { fetchLocalUser } from './reducers/loginReducer'
@@ -35,8 +35,6 @@ const App = () => {
       <div>
         <Router>
           <Header />
-          <Link to='/myblogs'>my blogs</Link>
-          <Link to='/users'>users</Link>
           <Switch>
             <Route path='/myblogs/:blogid'>
               <Blog />

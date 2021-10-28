@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createNewBlog } from '../../reducers/blogsReducer'
 import { showNotification } from '../../reducers/notificationReducer'
+import Notification from '../Notification'
 
 const CreateBlog = () => {
     const [formVisible, setFormVisible] = useState(false)
@@ -16,11 +17,19 @@ const CreateBlog = () => {
           url: e.target.url.value,
         }
         dispatch(createNewBlog(user.data.token, blogObj))
-        dispatch(showNotification(`blog saved by`)) 
+        dispatch(showNotification(`blog saved by`))
+        
+        e.target.title.value = ''
+        e.target.author.value = ''
+        e.target.url.value = ''
+        setFormVisible(false)
     }
     
     return (
         <>
+        <br />
+        <br />
+        <Notification />
         <button 
          style={{display: formVisible ? 'none' : ''}}
          onClick={() => setFormVisible(true)}

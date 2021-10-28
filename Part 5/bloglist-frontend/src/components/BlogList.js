@@ -6,13 +6,16 @@ const BlogList = () => {
     const blogs = useSelector(state => state.blogs)
     
     return (
-        <><br /><br />{
-            blogs.map(blog => <Link to={`/myblogs/${blog._id}`} 
-                key={blog._id}>
-                    {blog.title}<br />
-                </Link>
-            )
-        }</>
+        <div>
+            <h2>blogs</h2>
+            {
+                blogs.map(blog => <Link to={`/myblogs/${blog._id}`} 
+                    key={blog._id}>
+                        {blog.title}<br />
+                    </Link>
+                )
+            }
+        </div>
     )
 }
 

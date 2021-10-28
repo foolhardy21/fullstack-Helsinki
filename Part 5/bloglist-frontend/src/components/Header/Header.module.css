@@ -1,0 +1,16 @@
+.navlist {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.navlist_item {
+    list-style: none;
+    margin-right: 20px;
+}
+
+.navlist_link {
+    text-decoration: none;
+    color: black;
+}
