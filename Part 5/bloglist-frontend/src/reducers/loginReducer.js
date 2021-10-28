@@ -1,4 +1,4 @@
-import { getLoginToken } from "../services/blogs"
+import { getLoginToken } from "../services/login"
 
 const initialUser = {
     loginSuccess: false,

@@ -1,4 +1,4 @@
-import { getAllUsers } from "../services/blogs"
+import { getAllUsers } from "../services/users"
 
 const initialUsers=[]
 
