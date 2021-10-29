@@ -30,6 +30,6 @@ Apart from unit testing, E2E testing is performed and the file can be found in c
 - ESLint as linting tool.
 
 ### Running the application
-Before running the frontend, make sure you run the [backend](https://github.com/foolhardy21/fullstack-Helsinki/tree/main/Part%204/bloglist).
+Before running the frontend, make sure you run the [backend](https://github.com/foolhardy21/fullstack-Helsinki/tree/main/Part%204).
 
 To run this app, install the dependencies using `npm install` and then use the command `npm start`. Refer to package.json for other scripts.
