@@ -1,3 +1,7 @@
+.navbar {
+    background: lightgreen;
+    height: 30px;
+}
 .navlist {
     display: flex;
     justify-content: flex-start;

@@ -5,7 +5,7 @@ import Users from './components/Users'
 import User from './components/User'
 import BlogList from './components/BlogList'
 import CreateBlog from './components/CreateBlog/CreateBlog'
-import Login from './components/Login'
+import Login from './components/Login/Login'
 import Header from './components/Header/Header'
 import { showNotification } from './reducers/notificationReducer'
 import { initialiseBlogs } from './reducers/blogsReducer'
@@ -55,9 +55,9 @@ const App = () => {
     )
   }
   return (
-      <div>
+      <>
         <Login />
-      </div>
+      </>
    )
   
 }

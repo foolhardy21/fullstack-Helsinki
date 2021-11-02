@@ -1,0 +1,34 @@
+.login_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.4vmax;
+    text-transform: capitalize;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+}
+.login_form input {
+    height: 25px;
+}
+.login_form label {
+    margin-top: 15px;
+}
+.login_form input[type=submit] {
+    margin-top: 20px;
+    height: 30px;
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 800px) {
+    .login_section {
+        font-size: 2vmax;
+    }
+    .login_form {
+        width: 40vw;
+    }
+        
+}

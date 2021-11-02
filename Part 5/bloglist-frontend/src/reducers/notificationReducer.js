@@ -2,7 +2,7 @@ const notifications = []
 let notificationId = 0
 
 export const showNotification = (text) => {
-
+    
     return async dispatch => {
         const id = notificationId++
         dispatch({

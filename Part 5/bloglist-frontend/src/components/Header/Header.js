@@ -12,13 +12,13 @@ const Header = () => {
     }
       
     return (
-        <div>
+        <nav className={styles.navbar}>
             <ul className={styles.navlist}>
                 <li className={styles.navlist_item}>
-                    <Link to='/myblogs'>my blogs</Link>
+                    <Link className={styles.navlist_link} to='/myblogs'>my blogs</Link>
                 </li>
                 <li className={styles.navlist_item}>
-                    <Link to='/users'>users</Link>
+                    <Link className={styles.navlist_link} to='/users'>users</Link>
                 </li>
                 <li className={styles.navlist_item}>
                     {user.data.username} logged in
@@ -31,7 +31,7 @@ const Header = () => {
                     </Link>
                 </li>
             </ul>
-        </div>
+        </nav>
     )
 }
 
