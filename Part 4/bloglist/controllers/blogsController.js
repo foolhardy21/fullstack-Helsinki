@@ -76,3 +76,13 @@ exports.updateBlog = async function(req, res, next) {
     }
   })
 }
+
+
+exports.addCommenttoBlog = async function(req, res) {
+
+  const blog = await Blog.findById(req.params.id)
+  blog.comments = blog.comments.concat(req.body.comment)
+  const response = await blog.save()
+  
+  res.status(201).json(response)
+}

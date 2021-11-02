@@ -32,3 +32,10 @@ export const deleteBlog = async (blogId, token) => {
   const response = await axios.delete(deleteUrl, config, blogId)
   return response.data
 }
+
+export const addComment = async (comment, blogid) => {
+  const commentUrl = `${baseUrl}/${blogid}/comments`
+
+  const response = await axios.put(commentUrl, {comment})
+  return response.data
+}

@@ -5,8 +5,8 @@ const middleware = require('../util/middleware')
 
 blogsRouter.get('/', blogsController.getAllBlogs)
 blogsRouter.post('/',middleware.userExtractor, blogsController.postBlog)
-blogsRouter.delete('/:id', blogsController.deleteBlog)
+blogsRouter.put('/:id/comments', blogsController.addCommenttoBlog)
 blogsRouter.put('/:id', blogsController.updateBlog)
-
+blogsRouter.delete('/:id', blogsController.deleteBlog)
 
 module.exports = blogsRouter

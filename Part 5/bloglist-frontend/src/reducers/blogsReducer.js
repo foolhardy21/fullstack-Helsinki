@@ -1,4 +1,4 @@
-import { getAll, postBlog, likeBlog, deleteBlog } from "../services/blogs"
+import { getAll, postBlog, likeBlog, deleteBlog, addComment } from "../services/blogs"
 
 const blogs = []
 
@@ -15,7 +15,8 @@ export const initialiseBlogs = (username) => {
                     author: blog.author,
                     url: blog.url,
                     likes: blog.likes,
-                    _id: blog._id
+                    _id: blog._id,
+                    comments: blog.comments
                 }
         })
 
@@ -62,11 +63,26 @@ export const deleteTheBlog = (blogId, token) => {
         })
     }
 }
+export const appendComment = (comment, blogid) => {
+    return async dispatch => {
+        await addComment(comment, blogid)
+        
+        dispatch({
+            type: 'COMMENT',
+            data: {
+                blogid: blogid,
+                text: comment
+            }
+        })
+    }
+}
 
 const blogsReducer = (state=blogs, action) => {
     switch(action.type) {
         case 'INIT_BLOGS': return action.data
+        
         case 'NEW_BLOG': return [...state, action.data]
+        
         case 'LIKE': const newblogs = state.map(blog => {
             if(blog._id === action.data) {
                 blog.likes+=1
@@ -74,7 +90,17 @@ const blogsReducer = (state=blogs, action) => {
             return blog
         }) 
         return newblogs
+        
+        case 'COMMENT': const updatedblogs = state.map(blog => {
+            if(blog._id === action.data.blogid) {
+                blog.comments = blog.comments.concat(action.data.text)
+            }
+            return blog
+        }) 
+        return updatedblogs 
+        
         case 'DELETE': return state.filter(blog => blog._id !== action.data)
+        
         default: return state
     }
 }
