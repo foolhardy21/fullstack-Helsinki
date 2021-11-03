@@ -48,4 +48,4 @@ Participants are expected to have good programming skills, basic knowledge of we
 - Communicating with server in a redux
 - connect
 
-![Certificate of Completion](./certificate.png)
+![Certificate of Completion](./certificate_7.png)
