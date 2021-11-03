@@ -25,7 +25,7 @@ const Header = () => {
                 </li>
                 <li className={styles.navlist_item}>
                     <Link to='/'>
-                        <button onClick={logOut}>
+                        <button className={styles.logout_btn} onClick={logOut}>
                             logout
                         </button>
                     </Link>

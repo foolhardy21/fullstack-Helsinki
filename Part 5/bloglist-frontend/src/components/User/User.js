@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import styles from './User.module.css'
 
 const User = () => {
     const {userid} = useParams()
@@ -10,15 +11,19 @@ const User = () => {
         return null
     }
     return (
-        <div>
+        <>
             <h2>{user.name}</h2>
-            <h4>added blogs</h4>
-            {user.blogs.map(blog => {
-                return (
-                    <li key={blog._id}>{blog.title}</li>
-                )
-            })}
-        </div>
+            <h3>added blogs</h3>
+            <ul className={styles.userblogs}>
+            {
+                user.blogs.map(blog => {
+                    return (
+                        <li key={blog._id}>{blog.title}</li>
+                        )
+                })
+            }
+            </ul>
+        </>
     )
 }
 

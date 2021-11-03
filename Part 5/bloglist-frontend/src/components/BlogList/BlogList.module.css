@@ -1,0 +1,11 @@
+.bloglist a {
+    text-decoration: none;
+    color: black;
+}
+.bloglist li {
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+.bloglist a:hover {
+    cursor: pointer;
+}

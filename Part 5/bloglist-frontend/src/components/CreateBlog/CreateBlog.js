@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createNewBlog } from '../../reducers/blogsReducer'
 import { showNotification } from '../../reducers/notificationReducer'
 import Notification from '../Notification'
+import styles from './CreateBlog.module.css'
 
 const CreateBlog = () => {
     const [formVisible, setFormVisible] = useState(false)
@@ -26,9 +27,7 @@ const CreateBlog = () => {
     }
     
     return (
-        <>
-        <br />
-        <br />
+        <section className={styles.createblog_section}>
         <Notification />
         <button 
          style={{display: formVisible ? 'none' : ''}}
@@ -37,20 +36,20 @@ const CreateBlog = () => {
             create a new blog
         </button>
         <div style={{display: formVisible ? '' : 'none'}}>
-            <form
+            <form className={styles.blog_form}
             onSubmit={handleBlogSubmit}
             >
             <label htmlFor='title'>title</label>
-            <input name='title' type='text'/><br/>
+            <input name='title' type='text'/>
             <label htmlFor='author'>author</label>
-            <input name='author' type='text'/><br/>
+            <input name='author' type='text'/>
             <label htmlFor='url'>url</label>
-            <input name='url' type='text'/><br/>
+            <input name='url' type='text'/>
             <input type='submit' value='create' />
             </form>
-            <button onClick={() => setFormVisible(false)}>cancel</button>
+            <button className={styles.cancel_btn} onClick={() => setFormVisible(false)}>cancel</button>
         </div>
-        </>
+        </section>
     )
 }
 export default CreateBlog

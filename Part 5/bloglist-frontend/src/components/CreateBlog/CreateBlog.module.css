@@ -1,0 +1,33 @@
+.blog_form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-left: 5px;
+}
+
+.blog_form input[type=text] {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.cancel_btn {
+    width: 200px;
+    margin: 10px 4px;
+}
+
+@media only screen and (max-width: 800px) {
+    .createblog_section {
+        display: flex;
+        justify-content: center;
+    }
+    .blog_form {
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+        margin-left: 5px;
+    }    
+    .cancel_btn {
+        width: 30vw;
+    }
+        
+}

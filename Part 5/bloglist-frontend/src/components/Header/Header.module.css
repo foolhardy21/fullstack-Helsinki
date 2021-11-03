@@ -1,6 +1,5 @@
 .navbar {
-    background: lightgreen;
-    height: 30px;
+    margin: 0 0 20px 0;
 }
 .navlist {
     display: flex;
@@ -11,10 +10,44 @@
 
 .navlist_item {
     list-style: none;
-    margin-right: 20px;
+    margin-right: 40px;
+    background: lightsteelblue;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .navlist_link {
     text-decoration: none;
     color: black;
 }
+.navlist_link:active {
+    font-weight: bold;
+}
+
+.logout_btn {
+    background: transparent;
+    border-style: none;
+}
+.logout_btn:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+    .navbar {
+        height: 40px;
+    }
+    .navlist {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .navlist_item {
+        list-style: none;
+        margin-right: 25px;
+        background: lightsteelblue;
+        padding: 5px;
+        border-radius: 8px;
+    }    
+}  

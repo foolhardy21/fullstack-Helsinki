@@ -1,0 +1,15 @@
+.users_table {
+    padding: 10px;
+}
+.users_table td {
+    border: 2px solid lightslategray;
+    border-radius: 5px;
+    padding: 8px;
+}
+.users_table a {
+    text-decoration: none;
+    color: black;
+}
+.users_table a:hover {
+    cursor: pointer;
+}

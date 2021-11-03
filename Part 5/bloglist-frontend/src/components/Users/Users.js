@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getUsers } from '../reducers/usersReducer'
+import { getUsers } from '../../reducers/usersReducer'
+import styles from './Users.module.css'
 
 const Users = () => {
     const users = useSelector(state => state.users)
@@ -12,9 +13,9 @@ const Users = () => {
     },[])
 
     return (
-        <div>
+        <>
             <h3>Users</h3>
-            <table>
+            <table className={styles.users_table}>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -40,7 +41,7 @@ const Users = () => {
                 }
                 </tbody>
             </table>        
-        </div>
+        </>
     )
 }
 
