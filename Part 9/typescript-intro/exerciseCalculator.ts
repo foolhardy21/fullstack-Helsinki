@@ -42,4 +42,4 @@ function calculateExercises(hours: Array<number>, target: number): exerciseResul
     }
 }
 
-console.log(calculateExercises([3,4,5],3))
+export default calculateExercises
