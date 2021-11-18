@@ -8,7 +8,7 @@ app.get('/hello', (_req, res) => {
 })
 
 app.get('/bmi', (req, res) => {
-    let weight=0, height=0
+    let weight:  number, height: number
     const queryWeight = req.query.weight
     const queryHeight = req.query.height
     if(!Number(queryWeight) || !Number(queryHeight)) {
