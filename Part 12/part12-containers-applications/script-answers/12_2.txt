@@ -1,0 +1,53 @@
+Script started on 2021-11-19 12:59:06+05:30 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="120" LINES="30"]
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+]0;vinaykumar@LAPTOP-RDEQHGTE: ~[01;32mvinaykumar@LAPTOP-RDEQHGTE[00m:[01;34m~[00m$ docker pull -[Khello-world
+Using default tag: latest
+latest: Pulling from library/hello-world
+
+[1A[2K2db29710123e: Pulling fs layer [1B[1A[2K2db29710123e: Downloading [===========================>                       ]  1.369kB/2.479kB[1B[1A[2K2db29710123e: Download complete [1B[1A[2K2db29710123e: Extracting [==================================================>]  2.479kB/2.479kB[1B[1A[2K2db29710123e: Extracting [==================================================>]  2.479kB/2.479kB[1B[1A[2K2db29710123e: Pull complete [1BDigest: sha256:cc15c5b292d8525effc0f89cb299f1804f3a725c8d05e158653a563f15e4f685
+Status: Downloaded newer image for hello-world:latest
+docker.io/library/hello-world:latest
+]0;vinaykumar@LAPTOP-RDEQHGTE: ~[01;32mvinaykumar@LAPTOP-RDEQHGTE[00m:[01;34m~[00m$ docker run cona[Ktainer hellow-rold[1P-rold[Cwrold[C[1Pold[Crld
+Unable to find image 'container:latest' locally
+^C]0;vinaykumar@LAPTOP-RDEQHGTE: ~[01;32mvinaykumar@LAPTOP-RDEQHGTE[00m:[01;34m~[00m$ docker container run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+]0;vinaykumar@LAPTOP-RDEQHGTE: ~[01;32mvinaykumar@LAPTOP-RDEQHGTE[00m:[01;34m~[00m$ docker run -it ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+
+[1A[2K7b1a6ab2e44d: Pulling fs layer [1B[1A[2K7b1a6ab2e44d: Downloading [>                                                  ]    290kB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=>                                                 ]  870.8kB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==>                                                ]  1.461MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===>                                               ]   2.05MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [====>                                              ]   2.64MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=====>                                             ]  3.238MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [======>                                            ]  3.832MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=======>                                           ]  4.422MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [========>                                          ]  5.004MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=========>                                         ]  5.593MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==========>                                        ]  6.171MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===========>                                       ]  6.761MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [============>                                      ]  7.048MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=============>                                     ]  7.637MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==============>                                    ]  8.219MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===============>                                   ]  8.813MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [================>                                  ]  9.407MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=================>                                 ]  9.993MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==================>                                ]  10.58MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===================>                               ]  11.17MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [====================>                              ]  11.75MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=====================>                             ]  12.33MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [======================>                            ]  12.93MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [========================>                          ]  13.82MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=========================>                         ]  14.42MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=========================>                         ]  14.71MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==========================>                        ]   15.3MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===========================>                       ]  15.89MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [============================>                      ]  16.48MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=============================>                     ]  17.07MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==============================>                    ]  17.66MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===============================>                   ]  17.96MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [================================>                  ]  18.54MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==================================>                ]  19.43MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===================================>               ]  20.01MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [====================================>              ]  20.59MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=====================================>             ]  21.18MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [======================================>            ]  21.77MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=======================================>           ]  22.35MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [========================================>          ]  22.93MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [========================================>          ]  23.23MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=========================================>         ]  23.52MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==========================================>        ]  24.11MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===========================================>       ]   24.7MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [============================================>      ]  25.29MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=============================================>     ]  25.87MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [==============================================>    ]  26.46MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [===============================================>   ]  27.06MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [================================================>  ]  27.65MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Downloading [=================================================> ]  28.53MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Verifying Checksum [1B[1A[2K7b1a6ab2e44d: Extracting [>                                                  ]  294.9kB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [=====>                                             ]  2.949MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [=========>                                         ]  5.603MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [=============>                                     ]  7.963MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [=================>                                 ]  10.03MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [======================>                            ]  12.68MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [===========================>                       ]  15.63MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [=================================>                 ]  18.87MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [=====================================>             ]  21.53MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [==========================================>        ]  24.18MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [==============================================>    ]  26.54MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [=================================================> ]  28.02MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Extracting [==================================================>]  28.57MB/28.57MB[1B[1A[2K7b1a6ab2e44d: Pull complete [1BDigest: sha256:626ffe58f6e7566e00254b638eb7e0f3b11d4da9675088f4781a50ae288f3322
+Status: Downloaded newer image for ubuntu:latest
+]0;root@41f71593a992: /root@41f71593a992:/# [K]0;root@41f71593a992: /root@41f71593a992:/# mkdir /usr/scr  rc/app
+]0;root@41f71593a992: /root@41f71593a992:/# touch       cd usr
+]0;root@41f71593a992: /usrroot@41f71593a992:/usr# cd src
+]0;root@41f71593a992: /usr/srcroot@41f71593a992:/usr/src# cd app
+]0;root@41f71593a992: /usr/src/approot@41f71593a992:/usr/src/app# touch index.js
+]0;root@41f71593a992: /usr/src/approot@41f71593a992:/usr/src/app# exit
+exit
+]0;vinaykumar@LAPTOP-RDEQHGTE: ~[01;32mvinaykumar@LAPTOP-RDEQHGTE[00m:[01;34m~[00m$ exit
+exit
+
+Script done on 2021-11-19 13:02:58+05:30 [COMMAND_EXIT_CODE="0"]
