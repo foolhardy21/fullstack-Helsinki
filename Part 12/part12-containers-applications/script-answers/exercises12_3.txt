@@ -1,0 +1,12 @@
+Script started on 2021-11-19 08:39:35+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+# nano index.js
+[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;53H(B[0;7m[ Read 0 lines ](B[m[H(B[0;7m  GNU nano 4.8                                            index.js                                                      [1;119H(B[m
+[29d(B[0;7m^G(B[m Get Help    (B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos     (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Mark Text
+[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy Text
+[28d[2d[39;49m(B[m[?12l[?25h[?25l[1;111H(B[0;7mModified(B[m
+[2dc[?12l[?25h[?25lo[?12l[?25h[?25ln[?12l[?25h[?25ls[?12l[?25h[?25lo[?12l[?25h[?25ll[?12l[?25h[?25le[?12l[?25h[?25l.[?12l[?25h[?25ll[?12l[?25h[?25lo[?12l[?25h[?25lg[?12l[?25h[?25l([?12l[?25h[?25li[?12l[?25h[?25l(B[0;1m[33min[39m(B[m[?12l[?25h[?25li[K[?12l[?25h[?25l [?12l[?25h[?25l'[?12l[?25h[?25lh[?12l[?25h[?25le[?12l[?25h[?25ll[?12l[?25h[?25ll[?12l[?25h[?25lo[?12l[?25h[?25l[42m [49m(B[m[?12l[?25h[?25l w[?12l[?25h[?25lo[?12l[?25h[?25lr
+[28d[K[2;23H[?12l[?25h[?25ll[?12l[?25h[?25ld[?12l[?25h[?25l[2;13H(B[0;1m[35m'hello world'[39m(B[m[?12l[?25h[?25l)[?12l[?25h[?25l[28;54H(B[0;7m[ Writing... ](B[m[1;111H(B[0;7m        (B[m[28;53H(B[0;7m[ Wrote 1 line ](B[m[2;27H[?12l[?25h[?25l
+[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t
+[?1l>[?2004l# exit
+
+Script done on 2021-11-19 08:40:28+00:00 [COMMAND_EXIT_CODE="0"]

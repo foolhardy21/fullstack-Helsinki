@@ -1,0 +1,133 @@
+ docker start -i blissful_euclid
+root@41f71593a992:/# cd usr
+root@41f71593a992:/usr# cd src/app
+root@41f71593a992:/usr/src/app# ls
+12_3.txt  index.js
+root@41f71593a992:/usr/src/app# sudo apt install nodejs
+bash: sudo: command not found
+root@41f71593a992:/usr/src/app# apt install -y nodejs
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  ca-certificates libc-ares2 libicu66 libnghttp2-14 libnode64 libssl1.1 libuv1 nodejs-doc openssl tzdata
+Suggested packages:
+  npm
+The following NEW packages will be installed:
+  ca-certificates libc-ares2 libicu66 libnghttp2-14 libnode64 libssl1.1 libuv1 nodejs nodejs-doc openssl tzdata
+0 upgraded, 11 newly installed, 0 to remove and 0 not upgraded.
+Need to get 17.9 MB of archives.
+After this operation, 74.6 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libssl1.1 amd64 1.1.1f-1ubuntu2.9 [1321 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 openssl amd64 1.1.1f-1ubuntu2.9 [622 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 ca-certificates all 20210119~20.04.2 [145 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 tzdata all 2021e-0ubuntu0.20.04 [295 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal/main amd64 libicu66 amd64 66.1-2ubuntu2 [8520 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libuv1 amd64 1.34.2-1ubuntu1.3 [80.8 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal/main amd64 libnghttp2-14 amd64 1.40.0-1build1 [78.7 kB]
+Get:8 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libc-ares2 amd64 1.15.0-1ubuntu0.1 [38.2 kB]
+Get:9 http://archive.ubuntu.com/ubuntu focal/universe amd64 libnode64 amd64 10.19.0~dfsg-3ubuntu1 [5765 kB]
+Get:10 http://archive.ubuntu.com/ubuntu focal/universe amd64 nodejs-doc all 10.19.0~dfsg-3ubuntu1 [942 kB]
+Get:11 http://archive.ubuntu.com/ubuntu focal/universe amd64 nodejs amd64 10.19.0~dfsg-3ubuntu1 [61.1 kB]
+Fetched 17.9 MB in 38s (474 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libssl1.1:amd64.
+(Reading database ... 4194 files and directories currently installed.)
+Preparing to unpack .../00-libssl1.1_1.1.1f-1ubuntu2.9_amd64.deb ...
+Unpacking libssl1.1:amd64 (1.1.1f-1ubuntu2.9) ...
+Selecting previously unselected package openssl.
+Preparing to unpack .../01-openssl_1.1.1f-1ubuntu2.9_amd64.deb ...
+Unpacking openssl (1.1.1f-1ubuntu2.9) ...
+Selecting previously unselected package ca-certificates.
+Preparing to unpack .../02-ca-certificates_20210119~20.04.2_all.deb ...
+Unpacking ca-certificates (20210119~20.04.2) ...
+Selecting previously unselected package tzdata.
+Preparing to unpack .../03-tzdata_2021e-0ubuntu0.20.04_all.deb ...
+Unpacking tzdata (2021e-0ubuntu0.20.04) ...
+Selecting previously unselected package libicu66:amd64.
+Preparing to unpack .../04-libicu66_66.1-2ubuntu2_amd64.deb ...
+Unpacking libicu66:amd64 (66.1-2ubuntu2) ...
+Selecting previously unselected package libuv1:amd64.
+Preparing to unpack .../05-libuv1_1.34.2-1ubuntu1.3_amd64.deb ...
+Unpacking libuv1:amd64 (1.34.2-1ubuntu1.3) ...
+Selecting previously unselected package libnghttp2-14:amd64.
+Preparing to unpack .../06-libnghttp2-14_1.40.0-1build1_amd64.deb ...
+Unpacking libnghttp2-14:amd64 (1.40.0-1build1) ...
+Selecting previously unselected package libc-ares2:amd64.
+Preparing to unpack .../07-libc-ares2_1.15.0-1ubuntu0.1_amd64.deb ...
+Unpacking libc-ares2:amd64 (1.15.0-1ubuntu0.1) ...
+Selecting previously unselected package libnode64:amd64.
+Preparing to unpack .../08-libnode64_10.19.0~dfsg-3ubuntu1_amd64.deb ...
+Unpacking libnode64:amd64 (10.19.0~dfsg-3ubuntu1) ...
+Selecting previously unselected package nodejs-doc.
+Preparing to unpack .../09-nodejs-doc_10.19.0~dfsg-3ubuntu1_all.deb ...
+Unpacking nodejs-doc (10.19.0~dfsg-3ubuntu1) ...
+Selecting previously unselected package nodejs.
+Preparing to unpack .../10-nodejs_10.19.0~dfsg-3ubuntu1_amd64.deb ...
+Unpacking nodejs (10.19.0~dfsg-3ubuntu1) ...
+Setting up libssl1.1:amd64 (1.1.1f-1ubuntu2.9) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Setting up libnghttp2-14:amd64 (1.40.0-1build1) ...
+Setting up libc-ares2:amd64 (1.15.0-1ubuntu0.1) ...
+Setting up tzdata (2021e-0ubuntu0.20.04) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Configuring tzdata
+------------------
+
+Please select the geographic area in which you live. Subsequent configuration questions will narrow this down by
+presenting a list of cities, representing the time zones in which they are located.
+
+  1. Africa   3. Antarctica  5. Arctic  7. Atlantic  9. Indian    11. SystemV  13. Etc
+  2. America  4. Australia   6. Asia    8. Europe    10. Pacific  12. US
+Geographic area: 9
+
+Please select the city or region corresponding to your time zone.
+
+  1. Antananarivo  3. Christmas  5. Comoro     7. Mahe      9. Mauritius  11. Reunion
+  2. Chagos        4. Cocos      6. Kerguelen  8. Maldives  10. Mayotte
+Time zone: 8
+
+
+Current default time zone: 'Indian/Maldives'
+Local time is now:      Fri Nov 19 16:39:57 +05 2021.
+Universal Time is now:  Fri Nov 19 11:39:57 UTC 2021.
+Run 'dpkg-reconfigure tzdata' if you wish to change it.
+
+Setting up libuv1:amd64 (1.34.2-1ubuntu1.3) ...
+Setting up nodejs-doc (10.19.0~dfsg-3ubuntu1) ...
+Setting up openssl (1.1.1f-1ubuntu2.9) ...
+Setting up libicu66:amd64 (66.1-2ubuntu2) ...
+Setting up ca-certificates (20210119~20.04.2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Updating certificates in /etc/ssl/certs...
+128 added, 0 removed; done.
+Setting up libnode64:amd64 (10.19.0~dfsg-3ubuntu1) ...
+Setting up nodejs (10.19.0~dfsg-3ubuntu1) ...
+update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/js.1.gz because associated file /usr/share/man/man1/nodejs.1.gz (of link group js) doesn't exist
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+Processing triggers for ca-certificates (20210119~20.04.2) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+root@41f71593a992:/usr/src/app# node -v
+v10.19.0
+root@41f71593a992:/usr/src/app# node index.js
+hello world
+root@41f71593a992:/usr/src/app#
