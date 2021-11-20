@@ -1,0 +1,35 @@
+>docker build -t todo-backend
+"docker build" requires exactly 1 argument.
+See 'docker build --help'.
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+
+C:\Users\STUDIES\ReactHelsinki\fullstack-Helsinki\Part 12\part12-containers-applications\todo-app\todo-backend>docker build -t todo-backend .
+[+] Building 15.0s (10/10) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 139B                                                                               0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 91B                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/node:16                                                         4.3s
+ => [auth] library/node:pull token for registry-1.docker.io                                                        0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 71.86kB                                                                               0.0s
+ => [1/4] FROM docker.io/library/node:16@sha256:580a0850049c59a48f06090edd48c9f966c5e6572bbbabc369ba3ecbc4855dba   0.0s
+ => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+ => [3/4] COPY . .                                                                                                 0.0s
+ => [4/4] RUN npm ci                                                                                              10.0s
+ => exporting to image                                                                                             0.5s
+ => => exporting layers                                                                                            0.5s
+ => => writing image sha256:fb2aa54f9fe719ac82e178fd34ce9777001a7f230210cc02d32dc6266606adfe                       0.0s
+ => => naming to docker.io/library/todo-backend                                                                    0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+
+C:\Users\STUDIES\ReactHelsinki\fullstack-Helsinki\Part 12\part12-containers-applications\todo-app\todo-backend>docker run -p 3001:3000 todo-backend
+
+> todo-express-backend@0.0.0 start
+> node ./bin/www
+
+GET / 200 2.581 ms - 12
