@@ -9,12 +9,12 @@ app.get('/hello', (_req, res) => {
     res.send('hello Full Stack')
 })
 app.get('/bmi', (req, res) => {
-    let weight:  number, height: number
+    let weight: number, height: number
     const queryWeight = req.query.weight
     const queryHeight = req.query.height
     if(!Number(queryWeight) || !Number(queryHeight)) {
         res.json({
-            error:'Invalid values'
+            error: 'Invalid values'
         })
     } else {
         weight = Number(queryWeight)
@@ -35,8 +35,8 @@ app.get('/bmi', (req, res) => {
 })
 app.post('/exercise',(req, res) => {
     
-    let daily_exercises: any = req.body.daily_exercises
-    let target: any = req.body.target
+    let daily_exercises: Array<number> = req.body.daily_exercises
+    let target: number = req.body.target
 
     if(!daily_exercises || !target) {
         res.send('parameters missing')    
