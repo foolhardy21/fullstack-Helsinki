@@ -1,10 +1,12 @@
 import express from 'express';
+import cors from 'cors';
+import pingRouter from './routes/pingRouter';
 
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 
-app.get('/',(_req,res) => {
-    res.send('hello patient');
-});
+app.use('/api/ping', pingRouter);
 
 export default app;
