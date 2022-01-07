@@ -3,10 +3,6 @@ import { Diagnose } from "../types";
 
 const diagnoses: Diagnose[] = diagnoseData;
 
-const getAllDiagnoses = (): Diagnose[] => {
+export const getAllDiagnoses = (): Diagnose[] => {
     return diagnoses;    
 };
-
-export default {
-    getAllDiagnoses
-}; 
