@@ -99,6 +99,14 @@ type Query {
     allBooks(author: String, genre: String): [Book!]!
     allAuthors: [Author!]!
 }
+type Mutation {
+    addBook(
+    title: String!,
+    author: String!,
+    published: Int!,
+    genres: [String!]!
+    ): [Book!]!
+}
 `
 
 const resolvers = {
@@ -110,6 +118,24 @@ const resolvers = {
         },
         allAuthors: () => {
             return authors.map(author => ({ ...author, bookCount: books.filter(book => book.author === author.name).length }))
+        }
+    },
+    Mutation: {
+        addBook: (root, args) => {
+            books = [...books, {
+                title: args.title,
+                author: args.author,
+                published: args.published,
+                genres: args.genres
+            }]
+            if (authors.findIndex(author => author.name === args.author) === -1) {
+                authors = [...authors, {
+                    name: args.author,
+                    id: String(Math.random()),
+                    born: null
+                }]
+            }
+            return books
         }
     }
 }
