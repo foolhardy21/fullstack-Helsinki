@@ -1,7 +1,18 @@
-import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Authors from "./Authors";
+
+const router = createBrowserRouter([
+  {
+    path: "/authors",
+    element: <Authors />,
+  },
+]);
 
 function App() {
-  return <div>library</div>;
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
-
 export default App;
