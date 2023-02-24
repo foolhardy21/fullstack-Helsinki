@@ -32,7 +32,7 @@ const Author = ({ author }) => {
     <tr>
       <td>{author.name}</td>
       <td>{author.born}</td>
-      <td>{data.allBooks.length}</td>
+      <td>{data?.allBooks?.length}</td>
     </tr>
   )
 }

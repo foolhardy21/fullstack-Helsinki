@@ -1,10 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Authors from "./Authors";
+import Authors from "./pages/Authors";
+import Books from "./pages/Books";
 
 const router = createBrowserRouter([
   {
     path: "/authors",
     element: <Authors />,
+  },
+  {
+    path: "/books",
+    element: <Books />,
   },
 ]);
 
