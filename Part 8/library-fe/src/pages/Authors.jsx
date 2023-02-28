@@ -1,5 +1,5 @@
-import { gql, useQuery } from "@apollo/client";
-import { useEffect } from "react";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const GET_AUTHORS = gql`
@@ -21,6 +21,16 @@ query($author: String!) {
 }
 `
 
+const AUTHOR_BIRTH = gql`
+mutation($name: String!, $setBornTo: Int!) {
+  editAuthor(name: $name, setBornTo: $setBornTo) {
+    id
+    name
+    born
+  }
+}
+`
+
 const Author = ({ author }) => {
   const { loading, error, data } = useQuery(GET_AUTHOR_BOOKS, {
     variables: {
@@ -38,13 +48,36 @@ const Author = ({ author }) => {
 }
 
 const Authors = () => {
+  const [authorBirthForm, setAuthorBirthForm] = useState(false)
+  const [authorName, setAuthorName] = useState('')
+  const [birthYear, setBirthYear] = useState('')
   const { loading, error, data: authorsData } = useQuery(GET_AUTHORS);
+  const [editAuthor] = useMutation(AUTHOR_BIRTH, {
+    refetchQueries: [{ query: GET_AUTHORS }]
+  })
 
   return (
     <>
       <Link to='/books'>
         <button>books</button>
       </Link>
+      <button onClick={() => setAuthorBirthForm(true)}>add birth year</button>
+      {
+        authorBirthForm &&
+        <form onSubmit={(e) => {
+          e.preventDefault()
+          editAuthor({
+            variables: {
+              name: authorName,
+              setBornTo: Number(birthYear)
+            }
+          })
+        }}>
+          <input type="text" placeholder="author name" value={authorName} onChange={(e) => setAuthorName(e.target.value)} />
+          <input type="number" placeholder="year of birth" value={birthYear} onChange={(e) => setBirthYear(e.target.value)} />
+          <button type="submit">add birth year</button>
+        </form>
+      }
       <p>authors</p>
       <table>
         <thead>
