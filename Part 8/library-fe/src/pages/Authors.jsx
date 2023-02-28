@@ -73,7 +73,11 @@ const Authors = () => {
             }
           })
         }}>
-          <input type="text" placeholder="author name" value={authorName} onChange={(e) => setAuthorName(e.target.value)} />
+          <select value={authorName} onChange={(e) => setAuthorName(e.target.value)}>
+            {
+              authorsData?.allAuthors?.map(author => <option key={author.id} value={author.name}>{author.name}</option>)
+            }
+          </select>
           <input type="number" placeholder="year of birth" value={birthYear} onChange={(e) => setBirthYear(e.target.value)} />
           <button type="submit">add birth year</button>
         </form>
