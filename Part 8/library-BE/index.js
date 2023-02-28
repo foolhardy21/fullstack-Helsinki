@@ -129,6 +129,7 @@ const resolvers = {
     Mutation: {
         addBook: (root, args) => {
             books = [...books, {
+                id: String(Math.random()),
                 title: args.title,
                 author: args.author,
                 published: args.published,
